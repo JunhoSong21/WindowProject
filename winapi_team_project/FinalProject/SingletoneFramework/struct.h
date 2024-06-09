@@ -50,6 +50,12 @@ public:
 		return Vec2(x + other.x, y + other.y);
 	}
 
+	void operator += (Vec2 _Other)
+	{
+		x += _Other.x;
+		y += _Other.y;
+	}
+
 	Vec2 operator -(Vec2 other)
 	{
 		return Vec2(x - other.x, y - other.y);
@@ -58,6 +64,11 @@ public:
 	Vec2 operator *(Vec2 other)
 	{
 		return Vec2(x * other.x, y * other.y);
+	}
+
+	Vec2 operator * (int _i)
+	{
+		return Vec2(x * (float)_i, y * (float)_i);
 	}
 
 	Vec2 operator /(Vec2 other)

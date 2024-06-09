@@ -32,6 +32,8 @@ void CColliderMgr::CollisionUpdateGroup(GROUP_TYPE _left, GROUP_TYPE _right) {
 			CCollider* pLeftCol = vecLeft[i]->GetCollider();
 			CCollider* pRightCol = vecRight[j]->GetCollider();
 
+
+			// 두 충돌체 조합 ID 생성
 			ColliderID ID;
 			ID.Left_ID = pLeftCol->GetID();
 			ID.Right_ID = pRightCol->GetID();
@@ -49,14 +51,24 @@ void CColliderMgr::CollisionUpdateGroup(GROUP_TYPE _left, GROUP_TYPE _right) {
 				// 현재 충돌 중
 				if (iter->second) {
 					//이전에도 충돌
-					pLeftCol->OnCollision(pRightCol);
-					pRightCol->OnCollision(pLeftCol);
+
+					if (vecLeft[i]->IsDead() || vecRight[j]->IsDead()) {
+						pLeftCol->OnCollisionExit(pRightCol);
+						pRightCol->OnCollisionExit(pLeftCol);
+						iter->second = false;
+					}
+					else {
+						pLeftCol->OnCollision(pRightCol);
+						pRightCol->OnCollision(pLeftCol);
+					}
 				}
 				else {
 					//이전에는 충돌 X
-					pLeftCol->OnCollisionEnter(pRightCol);
-					pRightCol->OnCollisionEnter(pLeftCol);
-					iter->second = true;
+					if (!vecLeft[i]->IsDead() && !vecRight[j]->IsDead()) {
+						pLeftCol->OnCollisionEnter(pRightCol);
+						pRightCol->OnCollisionEnter(pLeftCol);
+						iter->second = true;
+					}
 				}
 			}
 			else {

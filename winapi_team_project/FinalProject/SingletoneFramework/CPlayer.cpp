@@ -12,15 +12,23 @@
 #include "CScene.h"
 #include "CTexture.h"
 #include "CCollider.h"
+#include "CAnimator.h"
+#include "CAnimation.h"
 
 CPlayer::CPlayer()
-	: tex(nullptr)
 {
-	tex = CResMgr::Instance()->LoadTexture(L"PlayerTex", L"Texture\\PlayerSprite.bmp");
 	CreateCollider();
-
 	GetCollider()->SetOffsetPos(Vec2(0.f, 10.f));
 	GetCollider()->SetScale(Vec2(80.f, 90.f));
+
+	CTexture* tex = CResMgr::Instance()->LoadTexture(L"PlayerTex", L"Texture\\player.bmp");
+	CreateAnimator();
+	GetAnimator()->CreateAnimation(L"WALK_RIGHT", tex, Vec2(0.f, 0.f), Vec2(45.f, 50.f), Vec2(45.f, 0.f), 0.1f, 6.f);
+	GetAnimator()->Play(L"WALK_RIGHT", true);
+
+	CAnimation* Anim = GetAnimator()->FindAnimation(L"WALK_RIGHT");
+	for (int i = 0; i < Anim->GetMaxFrame(); ++i)
+		Anim->GetFrame(0).offSet = Vec2(0.f, -20.f);
 }
 
 CPlayer::~CPlayer() {
@@ -50,20 +58,11 @@ void CPlayer::Update() {
 	}
 
 	setPos(ptPos);
+
+	GetAnimator()->Update();
 }
 
 void CPlayer::Render(HDC _dc) {
-	Vec2 ptPos = getPos();
-	int width = (int)tex->Width();
-	int height = (int)tex->Height();
-
-	TransparentBlt(_dc
-		, int(ptPos.x - (float)(width / 2))
-		, int(ptPos.y - (float)(height / 2))
-		, width, height
-		, tex->GetDC()
-		, 0, 0, 45, 50
-		, RGB(255, 0, 255));
 
 	CommponentRender(_dc);
 }
@@ -73,11 +72,10 @@ void CPlayer::CreateMissile() {
 	MissilePos.y -= getScale().y / 2.f;
 
 	CMissile* Missile = new CMissile;
+	Missile->SetName(L"Missile_Player");
 	Missile->setPos(MissilePos);
 	Missile->setScale(Vec2(25.f, 25.f));
 	Missile->SetDir(Vec2(0.f, 7.f));
 
-	// ÇöÀç¾À ¾ò¾î¿È
-	CScene* curScenes = CSceneMgr::Instance()->GetCurScene();
-	curScenes->AddObject(Missile, GROUP_TYPE::DEFAULT);
+	CreateObject(Missile, GROUP_TYPE::PROJ_PLAYER);
 }

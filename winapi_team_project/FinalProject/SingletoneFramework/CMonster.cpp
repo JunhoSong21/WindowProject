@@ -9,6 +9,7 @@ CMonster::CMonster()
 	, CenterPos(Vec2(0.f, 0.f))
 	, MaxDis(50.f)
 	, Dir(1)
+	, iHP(5)
 {
 	CreateCollider();
 	GetCollider()->SetScale(Vec2(42.f, 42.f));
@@ -34,4 +35,17 @@ void CMonster::Update()	{
 	}
 
 	setPos(curPos);
+}
+
+void CMonster::OnCollisionEnter(CCollider* _pOther) {
+	CObject* OtherObj = _pOther->GetObj();
+
+	if (OtherObj->GetName() == L"Missile_Player") {
+		iHP -= 1;
+		
+		if (iHP < 0)
+			DeleteObject(this);
+	}
+
+	
 }

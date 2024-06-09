@@ -2,6 +2,7 @@
 #include "CCore.h"
 
 #include "CKeyMgr.h"
+#include "CEventMgr.h"
 #include "CColliderMgr.h"
 #include "CPathMgr.h"
 #include "CSceneMgr.h"
@@ -58,15 +59,24 @@ int CCore::Init(HWND _hWnd, POINT _ptResolution) {
 }
 
 void CCore::Progress() {
+	// 매니저 업데이트
 	CTimeMgr::Instance()->Update();
 	CKeyMgr::Instance()->Update();
+
 	CSceneMgr::Instance()->Update();
+
+	// 충돌체크
 	CColliderMgr::Instance()->Update();
 
 	Rectangle(mDC, -1, -1, ptResolution.x + 1, ptResolution.y + 1);
 
 	CSceneMgr::Instance()->Render(mDC);
 	BitBlt(hDC, 0, 0, ptResolution.x, ptResolution.y, mDC, 0, 0, SRCCOPY);
+
+	CTimeMgr::Instance()->Render();
+
+	// 이벤트 지연처리
+	CEventMgr::Instance()->Update();
 }
 
 void CCore::CreateBrushPen() {

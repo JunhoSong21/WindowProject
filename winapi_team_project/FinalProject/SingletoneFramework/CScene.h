@@ -14,9 +14,9 @@ public:
 	void SetName(const wstring& _strName) { strName = _strName; }
 	const wstring& GetName() { return strName; }
 
-	void Update();
-	void FinalUpdate();
-	void Render(HDC _hDC);
+	virtual void Update();
+	virtual void FinalUpdate();
+	virtual void Render(HDC _hDC);
 
 	virtual void Enter() = 0;
 	virtual void Exit() = 0;
@@ -29,5 +29,7 @@ public:
 	const vector<CObject*>& GetGroupObject(GROUP_TYPE _type) {
 		return arrObj[(UINT)_type];
 	}
+	void DeleteGroup(GROUP_TYPE _Target);
+	void DeleteAll();
 };
 

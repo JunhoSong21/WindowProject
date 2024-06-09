@@ -36,9 +36,6 @@
     <Filter Include="Engine\03. Manager\Scene">
       <UniqueIdentifier>{fec624da-94c5-4c40-8286-8354f8d1687b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\03. Manager\Scene\Scene_Start">
-      <UniqueIdentifier>{817e22f5-3209-4339-95fa-3d8a2a8cb0ee}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\04. Object\CObject">
       <UniqueIdentifier>{6209825c-1b8a-473a-91d5-6c0c502585ce}</UniqueIdentifier>
     </Filter>
@@ -71,6 +68,21 @@
     </Filter>
     <Filter Include="Engine\03. Manager\Collider">
       <UniqueIdentifier>{f5fad2b8-001b-45e1-86b0-86ec14160c5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Manager\Event">
+      <UniqueIdentifier>{25039bb8-e5b7-402b-b1f9-49c1c874a720}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\05. Scene\Scene_Start">
+      <UniqueIdentifier>{817e22f5-3209-4339-95fa-3d8a2a8cb0ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\05. Scene\Scene_Tool">
+      <UniqueIdentifier>{9cfbb4b9-4f48-43dc-84ca-959f470a59af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\07. Component\Animator">
+      <UniqueIdentifier>{279265db-7d7a-490b-a84c-f401ba07a9c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\07. Component\Animator\Animation">
+      <UniqueIdentifier>{0bf43fc7-b4b3-49c1-a0d8-fd66bdcf997c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -111,7 +123,7 @@
       <Filter>Engine\03. Manager\Scene</Filter>
     </ClInclude>
     <ClInclude Include="Scene_Start.h">
-      <Filter>Engine\03. Manager\Scene\Scene_Start</Filter>
+      <Filter>Engine\05. Scene\Scene_Start</Filter>
     </ClInclude>
     <ClInclude Include="CObject.h">
       <Filter>Engine\04. Object\CObject</Filter>
@@ -146,6 +158,21 @@
     <ClInclude Include="CColliderMgr.h">
       <Filter>Engine\03. Manager\Collider</Filter>
     </ClInclude>
+    <ClInclude Include="CEventMgr.h">
+      <Filter>Engine\03. Manager\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="func.h">
+      <Filter>Engine\01. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_Tool.h">
+      <Filter>Engine\05. Scene\Scene_Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="CAnimator.h">
+      <Filter>Engine\07. Component\Animator</Filter>
+    </ClInclude>
+    <ClInclude Include="CAnimation.h">
+      <Filter>Engine\07. Component\Animator\Animation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CCore.cpp">
@@ -167,7 +194,7 @@
       <Filter>Engine\03. Manager\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Scene_Start.cpp">
-      <Filter>Engine\03. Manager\Scene\Scene_Start</Filter>
+      <Filter>Engine\05. Scene\Scene_Start</Filter>
     </ClCompile>
     <ClCompile Include="CObject.cpp">
       <Filter>Engine\04. Object\CObject</Filter>
@@ -201,6 +228,21 @@
     </ClCompile>
     <ClCompile Include="CColliderMgr.cpp">
       <Filter>Engine\03. Manager\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="CEventMgr.cpp">
+      <Filter>Engine\03. Manager\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="func.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Tool.cpp">
+      <Filter>Engine\05. Scene\Scene_Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="CAnimator.cpp">
+      <Filter>Engine\07. Component\Animator</Filter>
+    </ClCompile>
+    <ClCompile Include="CAnimation.cpp">
+      <Filter>Engine\07. Component\Animator\Animation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

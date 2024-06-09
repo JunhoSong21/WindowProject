@@ -17,15 +17,8 @@ CScene::~CScene() {
 void CScene::Update() {
 	for (UINT i = 0; i < (UINT)GROUP_TYPE::END; ++i) {
 		for (size_t j = 0; j < arrObj[i].size(); ++j) {
-			arrObj[i][j]->Update();
-		}
-	}
-}
-
-void CScene::Render(HDC _hDC) {
-	for (UINT i = 0; i < (UINT)GROUP_TYPE::END; ++i) {
-		for (size_t j = 0; j < arrObj[i].size(); ++j) {
-			arrObj[i][j]->Render(_hDC);
+			if (!arrObj[i][j]->IsDead())
+				arrObj[i][j]->Update();
 		}
 	}
 }
@@ -35,5 +28,31 @@ void CScene::FinalUpdate() {
 		for (size_t j = 0; j < arrObj[i].size(); ++j) {
 			arrObj[i][j]->FinalUpdate();
 		}
+	}
+}
+
+void CScene::Render(HDC _hDC) {
+	for (UINT i = 0; i < (UINT)GROUP_TYPE::END; ++i) {
+		vector<CObject*>::iterator iter = arrObj[i].begin();
+
+		for (; iter != arrObj[i].end(); ++iter) {
+			if (!(*iter)->IsDead()) {
+				(*iter)->Render(_hDC);
+				++iter;
+			}
+			else {
+				iter = arrObj[i].erase(iter);
+			}
+		}
+	}
+}
+
+void CScene::DeleteGroup(GROUP_TYPE _Target) {
+	Safe_Delete_Vec(arrObj[(UINT)_Target]);
+}
+
+void CScene::DeleteAll() {
+	for (UINT i = 0; i < (UINT)GROUP_TYPE::END; ++i) {
+		DeleteGroup((GROUP_TYPE)i);
 	}
 }

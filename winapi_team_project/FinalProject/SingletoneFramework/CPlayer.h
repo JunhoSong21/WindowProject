@@ -6,10 +6,9 @@ class CTexture;
 class CPlayer : 
 	public CObject {
 private:
-	CTexture* tex;
-
 	void CreateMissile();
 
+	CLONE(CPlayer);
 public:
 	CPlayer();
 	~CPlayer();

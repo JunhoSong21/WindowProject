@@ -30,10 +30,11 @@ CCollider::~CCollider()
 void CCollider::FinalUpdate() {
 	Vec2 objectPos = owner->getPos();
 	finalPos = objectPos + offsetPos;
+
+	assert(0 <= icol);
 }
 
 void CCollider::Render(HDC _hDC) {
-
 	PEN_TYPE ePen = PEN_TYPE::GREEN;
 
 	if (icol)
@@ -49,15 +50,17 @@ void CCollider::Render(HDC _hDC) {
 }
 
 void CCollider::OnCollision(CCollider* _pOther) {
-
+	owner->OnCollision(_pOther);
 }
 
 void CCollider::OnCollisionEnter(CCollider* _pOther)
 {
-	icol = true;
+	++icol;
+	owner->OnCollisionEnter(_pOther);
 }
 
 void CCollider::OnCollisionExit(CCollider* _pOther)
 {
-	icol = false;	
+	--icol;
+	owner->OnCollisionExit(_pOther);
 }

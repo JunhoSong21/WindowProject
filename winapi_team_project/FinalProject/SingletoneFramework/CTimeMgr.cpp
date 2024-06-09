@@ -28,6 +28,11 @@ void CTimeMgr::Update()
 	dDT = (double)(curCount.QuadPart - prevCount.QuadPart) / (double)prequency.QuadPart;
 
 	prevCount = curCount;
+
+#ifdef _DEBUG
+	if (dDT > (1. / 60.))
+		dDT = (1. / 60.);
+#endif
 }
 
 void CTimeMgr::Render() {

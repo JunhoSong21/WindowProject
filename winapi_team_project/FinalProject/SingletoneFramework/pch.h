@@ -1,8 +1,12 @@
+#pragma once
 #include <Windows.h>
 #include <iostream>
 
 #include <vector>
 using std::vector;
+
+#include <map>
+using std::map;
 
 #include <string>
 using std::string;
@@ -15,13 +19,14 @@ using std::wstring;
 
 #include "define.h"
 #include "struct.h"
+#include "func.h"
 
-#include <map>
-using std::map;
+
+
 using std::make_pair;
 
-#ifdef _UNICODE
-#pragma comment(linker, "/entry:wWinMainCRTStartup /subsystem:console")
-#else
-#pragma comment(linker, "/entry:WinMainCRTStartup /subsystem:console")
-#endif
+//#ifdef _UNICODE
+//#pragma comment(linker, "/entry:wWinMainCRTStartup /subsystem:console")
+//#else
+//#pragma comment(linker, "/entry:WinMainCRTStartup /subsystem:console")
+//#endif
