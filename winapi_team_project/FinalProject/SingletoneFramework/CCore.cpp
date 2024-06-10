@@ -7,8 +7,8 @@
 #include "CPathMgr.h"
 #include "CSceneMgr.h"
 #include "CTimeMgr.h"
-
 #include "CObject.h"
+#include "CCamera.h"
 
 CCore::CCore()
 	:handle(0)
@@ -62,6 +62,7 @@ void CCore::Progress() {
 	// 매니저 업데이트
 	CTimeMgr::Instance()->Update();
 	CKeyMgr::Instance()->Update();
+	CCamera::Instance()->Update();
 
 	CSceneMgr::Instance()->Update();
 

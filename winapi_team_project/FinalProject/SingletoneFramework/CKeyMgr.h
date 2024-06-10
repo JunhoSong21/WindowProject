@@ -21,6 +21,8 @@ enum  class KEY {
 	SPACE,
 	ENTER,
 	ESC,
+	LBTN,
+	RBTN,
 	LAST,
 };
 
@@ -33,11 +35,12 @@ class CKeyMgr {
 	SINGLE(CKeyMgr);
 private:
 	vector<KeyInfo> vecKey;
-
+	Vec2			CurMousePos;
 public:
 	void Init();
 	void Update();
 
 public:
 	KEY_STATE GetKeyState(KEY key) { return vecKey[(int)key].state; }
+	Vec2 GetMousePos() { return CurMousePos; }
 };

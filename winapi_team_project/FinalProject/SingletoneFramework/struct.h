@@ -71,9 +71,20 @@ public:
 		return Vec2(x * (float)_i, y * (float)_i);
 	}
 
+	Vec2 operator*(float _f)
+	{
+		return Vec2(x * _f, y * _f);
+	}
+
 	Vec2 operator /(Vec2 other)
 	{
 		assert(!(0.f == other.x || 0.f == other.y));
 		return Vec2(x / other.x, y / other.y);
+	}
+
+	Vec2 operator /(float _f)
+	{
+		assert(!(0.f == _f));
+		return Vec2(x / _f, y / _f);
 	}
 };

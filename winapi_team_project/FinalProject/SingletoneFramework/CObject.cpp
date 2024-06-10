@@ -42,8 +42,13 @@ CObject::~CObject() {
 }
 
 void CObject::Render(HDC _hDC) {
-	Rectangle(_hDC, (int)(ptPos.x - ptScale.x / 2.f), (int)(ptPos.y - ptScale.y / 2.f),
-		(int)(ptPos.x + ptScale.x / 2.f), (int)(ptPos.y + ptScale.y / 2.f));
+	Vec2 RenderPos = CCamera::Instance()->GetRenderPos(ptPos);
+
+	Rectangle(_hDC
+		, (int)(RenderPos.x - ptScale.x / 2.f)
+		, (int)(RenderPos.y - ptScale.y / 2.f)
+		, (int)(RenderPos.x + ptScale.x / 2.f)
+		, (int)(RenderPos.y + ptScale.y / 2.f));
 	CommponentRender(_hDC);
 }
 

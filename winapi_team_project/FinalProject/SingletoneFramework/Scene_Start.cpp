@@ -11,6 +11,7 @@
 #include "CPathMgr.h"
 #include "CTexture.h"
 #include "CSceneMgr.h"
+#include "CCamera.h"
 
 Scene_Start::Scene_Start() {
 
@@ -26,6 +27,11 @@ void Scene_Start::Update() {
 	if (KEY_TAP(KEY::ENTER)) {
 		ChangeScene(SCENE_TYPE::TOOL);
 	}
+	if (KEY_TAP(KEY::LBTN))
+	{
+		Vec2 LookAt = CCamera::Instance()->GetRealPos(MOUSE_POS);
+		CCamera::Instance()->SetLookAt(LookAt);
+	}
 }
 
 void Scene_Start::Enter() {
@@ -35,15 +41,17 @@ void Scene_Start::Enter() {
 	obj->setScale(Vec2(100.f, 100.f));
 	AddObject(obj, GROUP_TYPE::PLAYER);
 
+	//CCamera::Instance()->SetTarget(obj);
+
 	CObject* OtherPlayer = obj->Clone();
 	OtherPlayer->setPos(Vec2(740.f, 384.f));
 	AddObject(OtherPlayer, GROUP_TYPE::PLAYER);
 
-	int monCount = 2;
+	int monCount = 10;
 	float moveDist = 25.f;
 	float objScale = 50.f;
-	Vec2 resolutions = CCore::Instance()->GetResolution();
-	float term = (resolutions.x - ((moveDist + objScale / 2.f) * 2)) / (float)(monCount - 1);
+	Vec2 Resolution = CCore::Instance()->GetResolution();
+	float term = (Resolution.x - ((moveDist + objScale / 2.f) * 2)) / (float)(monCount - 1);
 
 	CMonster* MonsterObj = nullptr;
 	for (int i = 0; i < monCount; ++i) {
@@ -58,6 +66,9 @@ void Scene_Start::Enter() {
 
 	CColliderMgr::Instance()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::MONSTER);
 	CColliderMgr::Instance()->CheckGroup(GROUP_TYPE::MONSTER, GROUP_TYPE::PROJ_PLAYER);
+
+	//Camera Look ÁöÁ¤
+	CCamera::Instance()->SetLookAt(Resolution / 2.f);
 }
 
 void Scene_Start::Exit() {
