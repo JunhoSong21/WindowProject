@@ -38,7 +38,7 @@ public:
 	}
 
 	AnimFrm& GetFrame(int _iIdx) { return vecFrm[_iIdx]; }
-	int GetMaxFrame() { return vecFrm.size(); }
+	UINT GetMaxFrame() { return (UINT)vecFrm.size(); }
 
 	void Create(CTexture* _Tex, Vec2 _LT, Vec2 _SliceSize, 
 		Vec2 _Step, float _Duration, UINT _FrameCount);

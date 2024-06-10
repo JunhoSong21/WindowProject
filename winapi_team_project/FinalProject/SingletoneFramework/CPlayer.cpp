@@ -27,8 +27,9 @@ CPlayer::CPlayer()
 	GetAnimator()->Play(L"WALK_RIGHT", true);
 
 	CAnimation* Anim = GetAnimator()->FindAnimation(L"WALK_RIGHT");
-	for (int i = 0; i < Anim->GetMaxFrame(); ++i)
+	for (UINT i = 0; i < Anim->GetMaxFrame(); ++i)
 		Anim->GetFrame(0).offSet = Vec2(0.f, -20.f);
+
 }
 
 CPlayer::~CPlayer() {
