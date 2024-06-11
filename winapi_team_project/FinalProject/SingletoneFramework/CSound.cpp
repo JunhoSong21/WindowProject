@@ -14,18 +14,18 @@ CSound::~CSound()
 		m_pSoundBuffer->Release();
 }
 
-int CSound::Load(const wstring& _strPath)
+int CSound::Load(const wstring& _str)
 {
 	if (nullptr == CSoundMgr::Instance()->GetSoundDevice())
 		assert(nullptr); // 사운드 객체 생성되지 않음
 
 	// 확장자 이름 구별하기
 	wchar_t szExt[10] = { 0 };
-	_wsplitpath_s(_strPath.c_str(), nullptr, 0, nullptr, 0, nullptr, 0, szExt, 10);
+	_wsplitpath_s(_str.c_str(), nullptr, 0, nullptr, 0, nullptr, 0, szExt, 10);
 
 	if (!wcscmp(szExt, L".wav")) // WAV 파일 로드
 	{
-		if (false == LoadWaveSound(_strPath))
+		if (false == LoadWaveSound(_str))
 			assert(nullptr);
 	}
 	else
@@ -34,11 +34,11 @@ int CSound::Load(const wstring& _strPath)
 	return S_OK;
 }
 
-bool CSound::LoadWaveSound(const wstring& _strPath)
+bool CSound::LoadWaveSound(const wstring& _str)
 {
 	HMMIO	hFile; // File Handle
 
-	wstring strFilePath = _strPath;
+	wstring strFilePath = _str;
 
 	//CreateFile
 	hFile = mmioOpen((wchar_t*)strFilePath.c_str(), NULL, MMIO_READ);//wave파일을 연다.
@@ -67,7 +67,6 @@ bool CSound::LoadWaveSound(const wstring& _strPath)
 	mmioAscend(hFile, &pChild, 0);
 	pChild.ckid = mmioFOURCC('d', 'a', 't', 'a');
 	mmioDescend(hFile, &pChild, &pParent, MMIO_FINDCHUNK);
-
 
 
 	memset(&m_tBuffInfo, 0, sizeof(DSBUFFERDESC));

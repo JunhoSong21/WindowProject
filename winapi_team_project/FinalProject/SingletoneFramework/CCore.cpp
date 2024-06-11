@@ -1,13 +1,14 @@
 #include "pch.h"
 #include "CCore.h"
 
-#include "CKeyMgr.h"
-#include "CResMgr.h"
-#include "CEventMgr.h"
 #include "CColliderMgr.h"
+#include "CEventMgr.h"
+#include "CKeyMgr.h"
 #include "CPathMgr.h"
+#include "CResMgr.h"
 #include "CSceneMgr.h"
 #include "CTimeMgr.h"
+
 #include "CObject.h"
 #include "CCamera.h"
 #include "CSound.h"
@@ -56,13 +57,14 @@ int CCore::Init(HWND _hWnd, POINT _ptResolution) {
 	CPathMgr::Instance()->Init();
 	CKeyMgr::Instance()->Init();
 	CSceneMgr::Instance()->Init();
+	CSoundMgr::Instance()->Init();
 
-	CResMgr::Instance()->LoadSound(L"BGM_01", L"Sound//DM.wav");
-	CSound* NewSound = CResMgr::Instance()->FindSound(L"BGM_01");
+	CResMgr::Instance()->LoadSound(L"BGM", L"Sound//MainBGM.wav");
+	CSound* NewSound = CResMgr::Instance()->FindSound(L"BGM");
 
-	NewSound->Play();
+	NewSound->PlayToBGM(true);
 	NewSound->SetPosition(0.f);
-	NewSound->SetVolume(10.f);
+	NewSound->SetVolume(20.f);
 	// NewSound->PlayToBGM(true);
 
 	return S_OK;

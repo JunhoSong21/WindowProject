@@ -42,8 +42,8 @@ void CMonster::OnCollisionEnter(CCollider* _pOther) {
 
 	if (OtherObj->GetName() == L"Missile_Player") {
 		iHP -= 1;
-		
-		if (iHP < 0)
+
+		if (iHP <= 0)
 			DeleteObject(this);
 	}
 

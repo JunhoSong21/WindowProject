@@ -41,7 +41,7 @@ void Scene_Start::Enter() {
 	obj->setScale(Vec2(100.f, 100.f));
 	AddObject(obj, GROUP_TYPE::PLAYER);
 
-	//CCamera::Instance()->SetTarget(obj);
+	CCamera::Instance()->SetTarget(obj);
 
 	CObject* OtherPlayer = obj->Clone();
 	OtherPlayer->setPos(Vec2(740.f, 384.f));

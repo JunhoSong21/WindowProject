@@ -6,13 +6,13 @@ class CCollider {
 private:
 	static UINT nextID; // 객체에 포함x 데이터에 계속 남아있음
 
-	CObject* owner; 
-	Vec2 offsetPos;
-	Vec2 finalPos;
-	Vec2 scale;	
+	CObject*	owner; 
+	Vec2		offsetPos;
+	Vec2		finalPos;
+	Vec2		scale;	
 
-	UINT iID; // 충돌체 고유 ID
-	UINT icol;
+	UINT		iID; // 충돌체 고유 ID
+	UINT		icol;
 
 public:
 	CCollider();

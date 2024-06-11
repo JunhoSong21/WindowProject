@@ -2,8 +2,7 @@
 
 class CCollider;
 
-union ColliderID
-{
+union ColliderID {
 	struct {
 		UINT Left_ID;
 		UINT Right_ID;

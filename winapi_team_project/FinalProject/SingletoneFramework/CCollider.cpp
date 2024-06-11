@@ -11,6 +11,7 @@ UINT CCollider::nextID = 0;
 CCollider::CCollider()
 	:owner(nullptr)
 	, iID(nextID++)
+	, icol(0)
 {
 }
 
@@ -45,6 +46,7 @@ void CCollider::Render(HDC _hDC) {
 	SelectGDI b(_hDC, BRUSH_TYPE::HOLLOW);
 
 	Vec2 RenderPos = CCamera::Instance()->GetRenderPos(finalPos);
+	
 	Rectangle(_hDC
 		, (int)(RenderPos.x - scale.x / 2.f)
 		, (int)(RenderPos.y - scale.y / 2.f)

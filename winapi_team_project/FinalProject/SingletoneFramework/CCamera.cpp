@@ -1,33 +1,32 @@
 #include "pch.h"
 #include "CCamera.h"
 
-#include "CObject.h"
 #include "CCore.h"
-#include "CTimeMgr.h"
 #include "CKeyMgr.h"
+#include "CTimeMgr.h"
+
+#include "CObject.h"
 
 CCamera::CCamera()
-	: TargetObh(nullptr)
+	: TargetObj(nullptr)
 	, fTime(.5f)//따라가는데 소요되는 시간
 	, fSpeed(0.f)
 	, fAccTime(0.f)
-{
-	
+{	
 }
 CCamera::~CCamera()
 {
-
 }
 
 void CCamera::Update()
 {
-	if (TargetObh)
+	if (TargetObj)
 	{
-		if (TargetObh->IsDead()) {
-			TargetObh = nullptr;
+		if (TargetObj->IsDead()) {
+			TargetObj = nullptr;
 		}
 		else {
-			LookAt = TargetObh->getPos();
+			LookAt = TargetObj->getPos();
 		}
 	}
 
@@ -44,18 +43,15 @@ void CCamera::Update()
 	CalDiff();
 }
 
-void CCamera::CalDiff()
-{
+void CCamera::CalDiff() {
 	//이전 LookAt과 현재 Look의 차이값을 보정해서 현재 LookAt을 구한다. -> 카메라가 플레이어를 천천히 따라간다
 	
 	fAccTime += fDT;
 
-	if (fTime <= fAccTime)
-	{
+	if (fTime <= fAccTime) {
 		CurLookAt = LookAt;			//시간 초과되면 강제 이동, 아니면 천천히 따라감
 	}
-	else
-	{
+	else {
 		Vec2 LookDir = LookAt - PrevLookAt;
 		CurLookAt = PrevLookAt + LookDir.Normalize() * fSpeed * fDT;
 	}

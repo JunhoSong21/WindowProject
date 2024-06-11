@@ -9,9 +9,8 @@ struct tEvent {
 class CEventMgr {
 	SINGLE(CEventMgr)
 private:
-	vector<tEvent> vecEvent;
-
-	vector<CObject*> vecDead;
+	vector<tEvent>		vecEvent;
+	vector<CObject*>	vecDead;
 
 	void Excute(const tEvent& _eve);
 

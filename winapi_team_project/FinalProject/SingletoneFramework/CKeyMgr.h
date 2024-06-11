@@ -36,6 +36,7 @@ class CKeyMgr {
 private:
 	vector<KeyInfo> vecKey;
 	Vec2			CurMousePos;
+
 public:
 	void Init();
 	void Update();

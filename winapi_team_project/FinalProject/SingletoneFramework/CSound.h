@@ -4,8 +4,8 @@
 
 #include "CSoundMgr.h"
 
-class CSound :
-	public Res
+class CSound
+	: public Res
 {
 private:
 	LPDIRECTSOUNDBUFFER		m_pSoundBuffer;
@@ -13,7 +13,7 @@ private:
 	int						m_iVolume;
 
 public:
-	int Load(const wstring& _strPath);
+	int Load(const wstring& _str);
 
 	// 일반 재생
 	void Play(bool _bLoop = false);
@@ -30,10 +30,8 @@ public:
 	void SetPosition(float _fPosition); // 0 ~ 100 사이
 
 private:
-	bool LoadWaveSound(const wstring& _strPath);
+	bool LoadWaveSound(const wstring& _str);
 	int GetDecibel(float _fVolume);
-
-
 
 public:
 	CSound();

@@ -14,7 +14,7 @@ public:
 	CTexture* LoadTexture(const wstring& _key, const wstring& _path);
 	CTexture* FindTexture(const wstring& _key);
 
-	CSound* LoadSound(const wstring& _key, const wstring& _path);
+	CSound* LoadSound(const wstring& _key, const wstring& _str);
 	CSound* FindSound(const wstring& _key);
 };
 

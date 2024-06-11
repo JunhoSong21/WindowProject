@@ -1,7 +1,6 @@
 #pragma once
 
-class CPathMgr 
-{
+class CPathMgr {
 	SINGLE(CPathMgr);
 private:
 	wchar_t contentPath[255];

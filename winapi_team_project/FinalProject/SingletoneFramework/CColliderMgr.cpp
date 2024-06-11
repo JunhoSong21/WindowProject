@@ -1,9 +1,11 @@
 #include "pch.h"
+#include <bitset>
 #include "CColliderMgr.h"
 
 #include "CSceneMgr.h"
 #include "CScene.h"
 #include "CObject.h"
+#include "CCore.h"
 #include "CCollider.h"
 
 CColliderMgr::CColliderMgr()
@@ -31,7 +33,6 @@ void CColliderMgr::CollisionUpdateGroup(GROUP_TYPE _left, GROUP_TYPE _right) {
 
 			CCollider* pLeftCol = vecLeft[i]->GetCollider();
 			CCollider* pRightCol = vecRight[j]->GetCollider();
-
 
 			// 두 충돌체 조합 ID 생성
 			ColliderID ID;
@@ -101,9 +102,10 @@ bool CColliderMgr::IsCollision(CCollider* _leftCol, CCollider* _rightCol) {
 void CColliderMgr::Update() {
 	// 충돌검사
 	for (UINT iRow = 0; iRow < (UINT)GROUP_TYPE::END; ++iRow) {
-		for (UINT iCol = iRow; iCol < (UINT)GROUP_TYPE::END; ++iCol)
+		for (UINT iCol = iRow; iCol < (UINT)GROUP_TYPE::END; ++iCol) {
 			if (arrCheck[iRow] & (1 << iCol))
 				CollisionUpdateGroup((GROUP_TYPE)iRow, (GROUP_TYPE)iCol);
+		}
 	}
 }
 

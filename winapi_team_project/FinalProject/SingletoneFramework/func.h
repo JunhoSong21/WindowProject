@@ -6,7 +6,6 @@ void CreateObject(CObject* _Obj, GROUP_TYPE _Group);
 void DeleteObject(CObject* _Obj);
 void ChangeScene(SCENE_TYPE _Next);
 
-
 template<typename T>
 void Safe_Delete_Vec(vector<T>& _vec) {
 	for (size_t i = 0; i < _vec.size(); ++i) {

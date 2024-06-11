@@ -1,16 +1,16 @@
 #include "pch.h"
 #include "CEventMgr.h"
 
-#include "CObject.h"
 #include "CSceneMgr.h"
+#include "CObject.h"
 #include "CScene.h"
 
-CEventMgr::CEventMgr() {
-
+CEventMgr::CEventMgr() 
+{
 }
 
-CEventMgr::~CEventMgr() {
-
+CEventMgr::~CEventMgr() 
+{
 }
 
 void CEventMgr::Update() {

@@ -44,12 +44,12 @@ int arrVK[(int)KEY::LAST] = {
 	// LAST,
 };
 
-CKeyMgr::CKeyMgr() {
-
+CKeyMgr::CKeyMgr() 
+{
 }
 
-CKeyMgr::~CKeyMgr() {
-
+CKeyMgr::~CKeyMgr() 
+{
 }
 
 void CKeyMgr::Init() {
