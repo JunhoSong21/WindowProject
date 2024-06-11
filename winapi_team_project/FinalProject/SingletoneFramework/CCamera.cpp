@@ -9,9 +9,9 @@
 
 CCamera::CCamera()
 	: TargetObj(nullptr)
-	, fTime(.5f)//따라가는데 소요되는 시간
+	, fTime(0.5f)//따라가는데 소요되는 시간
 	, fSpeed(0.f)
-	, fAccTime(0.f)
+	, fAccTime(0.5f)
 {	
 }
 CCamera::~CCamera()

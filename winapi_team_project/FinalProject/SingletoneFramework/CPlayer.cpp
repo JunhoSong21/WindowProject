@@ -19,16 +19,16 @@ CPlayer::CPlayer()
 {
 	CreateCollider();
 	GetCollider()->SetOffsetPos(Vec2(0.f, 10.f));
-	GetCollider()->SetScale(Vec2(80.f, 90.f));
+	GetCollider()->SetScale(Vec2 (40.f, 50.f));
 
 	CTexture* tex = CResMgr::Instance()->LoadTexture(L"PlayerTex", L"Texture\\player.bmp");
 	CreateAnimator();
 	GetAnimator()->CreateAnimation(L"WALK_RIGHT", tex, Vec2(0.f, 0.f), Vec2(45.f, 50.f), Vec2(45.f, 0.f), 0.1f, 6.f);
 	GetAnimator()->Play(L"WALK_RIGHT", true);
 
-	CAnimation* Anim = GetAnimator()->FindAnimation(L"WALK_RIGHT");
+	/*CAnimation* Anim = GetAnimator()->FindAnimation(L"WALK_RIGHT");
 	for (UINT i = 0; i < Anim->GetMaxFrame(); ++i)
-		Anim->GetFrame(0).offSet = Vec2(0.f, -20.f);
+		Anim->GetFrame(0).offSet = Vec2(0.f, -20.f);*/
 
 }
 
@@ -39,19 +39,19 @@ void CPlayer::Update() {
 	Vec2 ptPos = getPos();
 
 	if (KEY_HOLD(KEY::W)) {
-		ptPos.y -= 200.f * DT;
+		ptPos.y -= 200.f * fDT;
 	}
 
 	if (KEY_HOLD(KEY::S)) {
-		ptPos.y += 200.f * DT;
+		ptPos.y += 200.f * fDT;
 	}
 
 	if (KEY_HOLD(KEY::A)) {
-		ptPos.x -= 200.f * DT;
+		ptPos.x -= 200.f * fDT;
 	}
 
 	if (KEY_HOLD(KEY::D)) {
-		ptPos.x += 200.f * DT;
+		ptPos.x += 200.f * fDT;
 	}
 
 	if (KEY_TAP(KEY::SPACE)) {
@@ -64,7 +64,6 @@ void CPlayer::Update() {
 }
 
 void CPlayer::Render(HDC _dc) {
-
 	CommponentRender(_dc);
 }
 
@@ -76,7 +75,7 @@ void CPlayer::CreateMissile() {
 	Missile->SetName(L"Missile_Player");
 	Missile->setPos(MissilePos);
 	Missile->setScale(Vec2(25.f, 25.f));
-	Missile->SetDir(Vec2(0.f, 7.f));
+	Missile->SetDir(Vec2(0.f, -1.f));
 
 	CreateObject(Missile, GROUP_TYPE::PROJ_PLAYER);
 }

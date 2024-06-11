@@ -22,17 +22,17 @@ CMonster::~CMonster()
 void CMonster::Update()	{
 	Vec2 curPos = getPos();
 
-	// 진행 방향으로 시간당 Speed 만큼 이동
-	curPos.x += fDT * Speed * Dir;
+	//// 진행 방향으로 시간당 Speed 만큼 이동
+	//curPos.x += fDT * Speed * Dir;
 
-	// 배회 거리 기준점을 넘어섰는지 확인
-	float dist = abs(CenterPos.x - curPos.x) - MaxDis;
+	//// 배회 거리 기준점을 넘어섰는지 확인
+	//float dist = abs(CenterPos.x - curPos.x) - MaxDis;
 
-	if (0.f < dist) {
-		// 방향 변경
-		Dir *= -1;
-		curPos.x += dist * Dir;
-	}
+	//if (0.f < dist) {
+	//	// 방향 변경
+	//	Dir *= -1;
+	//	curPos.x += dist * Dir;
+	//}
 
 	setPos(curPos);
 }

@@ -17,12 +17,12 @@ public:
 
 	virtual void OnCollisionEnter(CCollider* _pOther);
 
-	CLONE(CMissile);
-
 	void SetDir(float _th) { Theta = _th; }
 	void SetDir(Vec2 _dir) {
 		Dir = _dir;
 		Dir.Normalize();
 	}
+
+	CLONE(CMissile);
 };
 

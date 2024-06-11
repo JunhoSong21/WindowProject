@@ -35,7 +35,7 @@ void CScene::Render(HDC _hDC) {
 	for (UINT i = 0; i < (UINT)GROUP_TYPE::END; ++i) {
 		vector<CObject*>::iterator iter = arrObj[i].begin();
 
-		for (; iter != arrObj[i].end(); ++iter) {
+		for (; iter != arrObj[i].end();) {
 			if (!(*iter)->IsDead()) {
 				(*iter)->Render(_hDC);
 				++iter;
