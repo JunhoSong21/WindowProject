@@ -2,6 +2,7 @@
 #include "CCore.h"
 
 #include "CKeyMgr.h"
+#include "CResMgr.h"
 #include "CEventMgr.h"
 #include "CColliderMgr.h"
 #include "CPathMgr.h"
@@ -9,6 +10,7 @@
 #include "CTimeMgr.h"
 #include "CObject.h"
 #include "CCamera.h"
+#include "CSound.h"
 
 CCore::CCore()
 	:handle(0)
@@ -54,6 +56,14 @@ int CCore::Init(HWND _hWnd, POINT _ptResolution) {
 	CPathMgr::Instance()->Init();
 	CKeyMgr::Instance()->Init();
 	CSceneMgr::Instance()->Init();
+
+	CResMgr::Instance()->LoadSound(L"BGM_01", L"Sound//DM.wav");
+	CSound* NewSound = CResMgr::Instance()->FindSound(L"BGM_01");
+
+	NewSound->Play();
+	NewSound->SetPosition(0.f);
+	NewSound->SetVolume(10.f);
+	// NewSound->PlayToBGM(true);
 
 	return S_OK;
 }
