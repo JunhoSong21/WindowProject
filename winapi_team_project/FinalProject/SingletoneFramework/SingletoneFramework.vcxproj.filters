@@ -93,6 +93,12 @@
     <Filter Include="Engine\06. Resource\CSound">
       <UniqueIdentifier>{df1aa6cf-608b-4014-85fe-fac593bace98}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\05. Scene\Scene_Enter">
+      <UniqueIdentifier>{67f3b916-fc81-43fb-95c0-0eda7bde0b7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\CMap">
+      <UniqueIdentifier>{c38dd0b9-d820-4b4d-848e-d54f674efa7b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -191,6 +197,12 @@
     <ClInclude Include="CSound.h">
       <Filter>Engine\06. Resource\CSound</Filter>
     </ClInclude>
+    <ClInclude Include="Scene_Enter.h">
+      <Filter>Engine\05. Scene\Scene_Enter</Filter>
+    </ClInclude>
+    <ClInclude Include="CMap.h">
+      <Filter>Engine\04. Object\CMap</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CCore.cpp">
@@ -270,6 +282,12 @@
     </ClCompile>
     <ClCompile Include="CSound.cpp">
       <Filter>Engine\06. Resource\CSound</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Enter.cpp">
+      <Filter>Engine\05. Scene\Scene_Enter</Filter>
+    </ClCompile>
+    <ClCompile Include="CMap.cpp">
+      <Filter>Engine\04. Object\CMap</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
