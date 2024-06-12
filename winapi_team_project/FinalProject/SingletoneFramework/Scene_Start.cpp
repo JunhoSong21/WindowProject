@@ -41,7 +41,7 @@ void Scene_Start::Enter() {
 	obj->setScale(Vec2(100.f, 100.f));
 	AddObject(obj, GROUP_TYPE::PLAYER);
 
-	// CCamera::Instance()->SetTarget(obj);
+	CCamera::Instance()->SetTarget(obj);
 	// 처음에 카메라 초기화를 안하는데
 	// 카메라의 좌표는 이동된 상태로 생성
 	// 처음에 총알이 생성될때 정해지는 좌표랑

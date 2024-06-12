@@ -4,6 +4,7 @@
 #include "CSceneMgr.h"
 #include "Scene_Start.h"
 #include "Scene_Tool.h"
+#include "Scene_Enter.h"
 
 CSceneMgr::CSceneMgr()
 	:arrScene(),
@@ -25,11 +26,14 @@ void CSceneMgr::Init() {
 	arrScene[(UINT)SCENE_TYPE::TOOL] = new Scene_Tool;
 	arrScene[(UINT)SCENE_TYPE::TOOL]->SetName(L"Tool Scene");
 
+	arrScene[(UINT)SCENE_TYPE::Enter] = new Scene_Enter;
+	arrScene[(UINT)SCENE_TYPE::Enter]->SetName(L"Enter Scene");
+
 	//arrScene[(UINT)SCENE_TYPE::STAGE_01] = new STAGE_01;
 	//arrScene[(UINT)SCENE_TYPE::STAGE_02] = new STAGE_02;
 
 	// ÇöÀç ¾À ÁöÁ¤
-	curScene = arrScene[(UINT)SCENE_TYPE::START];
+	curScene = arrScene[(UINT)SCENE_TYPE::Enter];
 	curScene->Enter();
 }
 
