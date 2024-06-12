@@ -2,12 +2,12 @@
 
 #include "CScene.h"
 
-class Scene_Enter :
+class Scene_Stage01 :
     public CScene
 {
 public:
-    Scene_Enter();
-    ~Scene_Enter();
+    Scene_Stage01();
+    ~Scene_Stage01();
 
     virtual void Update();
     virtual void Enter();

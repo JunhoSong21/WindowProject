@@ -3,15 +3,15 @@
 
 class CTexture;
 
-class CMap :
+class CStartScreen :
 	public CObject {
 private:
 	CTexture* tex;
 
-	CLONE(CMap);
+	CLONE(CStartScreen);
 public:
-	CMap();
-	~CMap();
+	CStartScreen();
+	~CStartScreen();
 
 	virtual void Update();
 	virtual void Render(HDC _dc);

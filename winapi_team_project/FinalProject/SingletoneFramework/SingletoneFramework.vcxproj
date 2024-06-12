@@ -143,7 +143,7 @@
     <ClInclude Include="CCore.h" />
     <ClInclude Include="CEventMgr.h" />
     <ClInclude Include="CKeyMgr.h" />
-    <ClInclude Include="CMap.h" />
+    <ClInclude Include="CStartScreen.h" />
     <ClInclude Include="CMissile.h" />
     <ClInclude Include="CMonster.h" />
     <ClInclude Include="CObject.h" />
@@ -162,9 +162,8 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="Res.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="Scene_Enter.h" />
+    <ClInclude Include="Scene_Stage01.h" />
     <ClInclude Include="Scene_Start.h" />
-    <ClInclude Include="Scene_Tool.h" />
     <ClInclude Include="SelectGDI.h" />
     <ClInclude Include="SingletoneFramework.h" />
     <ClInclude Include="struct.h" />
@@ -179,7 +178,7 @@
     <ClCompile Include="CCore.cpp" />
     <ClCompile Include="CEventMgr.cpp" />
     <ClCompile Include="CKeyMgr.cpp" />
-    <ClCompile Include="CMap.cpp" />
+    <ClCompile Include="CStartScreen.cpp" />
     <ClCompile Include="CMissile.cpp" />
     <ClCompile Include="CMonster.cpp" />
     <ClCompile Include="CObject.cpp" />
@@ -194,9 +193,8 @@
     <ClCompile Include="CTimeMgr.cpp" />
     <ClCompile Include="func.cpp" />
     <ClCompile Include="Res.cpp" />
-    <ClCompile Include="Scene_Enter.cpp" />
+    <ClCompile Include="Scene_Stage01.cpp" />
     <ClCompile Include="Scene_Start.cpp" />
-    <ClCompile Include="Scene_Tool.cpp" />
     <ClCompile Include="SelectGDI.cpp" />
     <ClCompile Include="SingletoneFramework.cpp" />
   </ItemGroup>

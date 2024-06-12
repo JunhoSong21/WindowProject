@@ -26,7 +26,7 @@
 
 enum class GROUP_TYPE {
 	MAP,
-	DEFAULT,
+	FURNITURE,
 	PLAYER,
 	MONSTER,
 	PROJ_PLAYER,
@@ -36,17 +36,19 @@ enum class GROUP_TYPE {
 };
 
 enum class SCENE_TYPE {
-	TOOL,
 	START,
-	Enter,
 	STAGE_01,
 	STAGE_02,
+	STAGE_03,
+	SCORE,
 
 	END,
 };
 
 enum class BRUSH_TYPE {
 	HOLLOW,
+	BLACK,
+
 	END,
 };
 
@@ -54,6 +56,7 @@ enum class PEN_TYPE {
 	RED,
 	GREEN,
 	BLUE,
+
 	END,
 };
 

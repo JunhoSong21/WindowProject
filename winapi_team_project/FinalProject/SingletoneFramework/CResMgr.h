@@ -17,4 +17,3 @@ public:
 	CSound* LoadSound(const wstring& _key, const wstring& _str);
 	CSound* FindSound(const wstring& _key);
 };
-

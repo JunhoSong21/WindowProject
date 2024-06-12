@@ -2,17 +2,14 @@
 
 #include "CScene.h"
 
-class Scene_Tool :
-	public CScene
+class Scene_Enter :
+    public CScene
 {
-private:
-
 public:
-	Scene_Tool();
-	~Scene_Tool();
+    Scene_Enter();
+    ~Scene_Enter();
 
-	virtual void Update();
-	virtual void Enter();
-	virtual void Exit();
+    virtual void Update();
+    virtual void Enter();
+    virtual void Exit();
 };
-

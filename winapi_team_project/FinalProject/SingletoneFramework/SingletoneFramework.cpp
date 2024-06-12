@@ -35,7 +35,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         return FALSE;
     }
 
-    if (FAILED(CCore::Instance()->Init(hWnd, POINT{ 1280, 720 }))) {
+    if (FAILED(CCore::Instance()->Init(hWnd, POINT{ 1920, 1200 }))) {
         MessageBox(nullptr, L"CCore 객체 초기화 실패", L"ERROR", MB_OK);
         return FALSE;
     }
@@ -87,7 +87,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance;
 
-   hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+   hWnd = CreateWindowW(szWindowClass, szTitle, WS_POPUPWINDOW,
       CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
 
    if (!hWnd)
