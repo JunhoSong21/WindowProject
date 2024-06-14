@@ -28,7 +28,11 @@ void Scene_Stage01::Update() {
 void Scene_Stage01::Enter() {
 	// Object Ãß°¡
 	CObject* obj = new CPlayer;
-	obj->setPos(Vec2(960.f, 540.f));
+
+	float ResloutionX = GetSystemMetrics(SM_CXSCREEN);
+	float ResloutionY = GetSystemMetrics(SM_CYSCREEN);
+
+	obj->setPos(Vec2(ResloutionX / 2, ResloutionY / 2));
 	obj->setScale(Vec2(100.f, 100.f));
 	AddObject(obj, GROUP_TYPE::PLAYER);
 
