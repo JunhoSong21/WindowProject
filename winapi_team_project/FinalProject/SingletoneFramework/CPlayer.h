@@ -6,6 +6,7 @@ class CTexture;
 class CPlayer : 
 	public CObject {
 private:
+	int Selection;
 	void CreateMissile();
 
 	CLONE(CPlayer);

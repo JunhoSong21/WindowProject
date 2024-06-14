@@ -7,7 +7,8 @@ class CMissile :
 private:
 	float	Theta;
 	Vec2	Dir;
-
+	float	Distance;
+	float	length;
 public:
 	CMissile();
 	~CMissile();
@@ -22,6 +23,8 @@ public:
 		Dir = _dir;
 		Dir.Normalize();
 	}
+	void Setlen(float len) { length = len; }
+	float getlen() { return length; }
 
 	CLONE(CMissile);
 };

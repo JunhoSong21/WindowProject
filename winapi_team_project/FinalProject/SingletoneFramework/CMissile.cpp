@@ -19,17 +19,21 @@ CMissile::~CMissile()
 
 void CMissile::Update() {
 	Vec2 ptPos = getPos();
-
-	ptPos.x += 600.f * Dir.x * fDT;
-	ptPos.y += 600.f * Dir.y * fDT;
-
+	GetCollider()->SetScale(getScale());
+	if (Distance < length) {
+		ptPos.x += 600.f * Dir.x * fDT;
+		ptPos.y += 600.f * Dir.y * fDT;
+		Distance += 500.f * fDT;
+	}
+	else {
+		DeleteObject(this);
+	}
 	setPos(ptPos);
 }
 
 void CMissile::Render(HDC _hDC) {
 	Vec2 ptPos = getPos();
 	Vec2 ptScale = getScale();
-
 	Vec2 RenderPos = CCamera::Instance()->GetRenderPos(ptPos);
 
 	Ellipse(_hDC, 

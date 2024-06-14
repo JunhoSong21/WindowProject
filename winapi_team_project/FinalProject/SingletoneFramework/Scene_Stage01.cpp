@@ -33,7 +33,7 @@ void Scene_Stage01::Enter() {
 	float ResloutionY = GetSystemMetrics(SM_CYSCREEN);
 
 	obj->setPos(Vec2(ResloutionX / 2, ResloutionY / 2));
-	obj->setScale(Vec2(100.f, 100.f));
+	obj->setScale(Vec2(45.f, 30.f));
 	AddObject(obj, GROUP_TYPE::PLAYER);
 
 	CCamera::Instance()->SetTarget(obj);

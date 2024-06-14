@@ -9,7 +9,6 @@
 
 #include "CScene.h"
 #include "CTexture.h"
-#include "CText.h"
 #include "SelectGDI.h"
 
 CStartScreen::CStartScreen()
@@ -45,17 +44,15 @@ void CStartScreen::Render(HDC _dc)
 		, SRCCOPY);
 
 	SelectGDI b(tex->GetDC(), BRUSH_TYPE::BLACK);
-	Rectangle(tex->GetDC(), -1, 1400, 3840, 1600);
+	Rectangle(tex->GetDC(), 0, 1400, 3840, 1600);
 
 	// 비슷한 폰트 목록
 	// coure, serife, smalle, h8514sys, h8514oem
 
-	RECT rt = { 1800, 1450, 2040, 1550 };
+	RECT rt = { 0,0,ResloutionX,1200 };
 	SetBkMode(_dc, TRANSPARENT);
-	SelectGDI w(_dc, PEN_TYPE::WHITE);
-	SelectGDI wh(_dc, BRUSH_TYPE::WHITE);
 	SetTextColor(_dc, RGB(255, 255, 255));
-	DrawText(_dc, L"PRESS ENTER", 15, &rt, DT_VCENTER | DT_CENTER | DT_SINGLELINE);
+	DrawText(_dc, L"PRESS ENTER", lstrlen(L"PRESS ENTER"), &rt, DT_VCENTER | DT_CENTER | DT_SINGLELINE);
 
 	CommponentRender(_dc);
 }
