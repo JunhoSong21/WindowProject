@@ -13,6 +13,7 @@ union ColliderID {
 class CColliderMgr {
 	SINGLE(CColliderMgr);
 private:
+	
 	map<ULONGLONG, bool> mapColinfo; //충돌체간의 이전 프레임 충돌 정보
 	UINT arrCheck[(UINT)GROUP_TYPE::END];	//그룹간의 충돌 체크
 		

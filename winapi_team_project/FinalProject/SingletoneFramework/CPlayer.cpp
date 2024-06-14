@@ -19,13 +19,13 @@
 CPlayer::CPlayer()
 {
 	CreateCollider();
-	GetCollider()->SetOffsetPos(Vec2(0.f, 10.f));
-	GetCollider()->SetScale(Vec2 (40.f, 50.f));
+	GetCollider()->SetOffsetPos(Vec2(0.f, 0.f));
+	GetCollider()->SetScale(Vec2 (30.f, 30.f));
 
 	CTexture* tex = CResMgr::Instance()->LoadTexture(L"PlayerTex", L"Texture\\player.bmp");
 	CreateAnimator();
-	GetAnimator()->CreateAnimation(L"WALK_RIGHT", tex, Vec2(0.f, 0.f), Vec2(45.f, 50.f), Vec2(45.f, 0.f), 0.1f, 6.f);
-	GetAnimator()->Play(L"WALK_RIGHT", true);
+	GetAnimator()->CreateAnimation(L"WALK", tex, Vec2(0.f, 45.f), Vec2(45.f, 30.f), Vec2(45.f, 0.f), 0.1f, 6.f);
+	GetAnimator()->Play(L"WALK", true);
 
 	/*CAnimation* Anim = GetAnimator()->FindAnimation(L"WALK_RIGHT");
 	for (UINT i = 0; i < Anim->GetMaxFrame(); ++i)
@@ -55,7 +55,7 @@ void CPlayer::Update() {
 		ptPos.x += 200.f * fDT;
 	}
 
-	if (KEY_TAP(KEY::SPACE)) {
+	if (KEY_TAP(KEY::LBTN)) {
 		CreateMissile();
 	}
 
@@ -77,13 +77,15 @@ void CPlayer::CreateMissile() {
 	Missile->setPos(MissilePos);
 	Missile->setScale(Vec2(25.f, 25.f));
 	Vec2 ptPos = getPos();
+	Vec2 RenderPos = CCamera::Instance()->GetRenderPos(ptPos);
+	Vec2 ptScale = getScale();
 
-	//ÃÑ¾ËÀÇ ¹æÇâº¤ÅÍ °è»ê
-	float SetaX = MOUSE_POS.x - ptPos.x;
-	float SetaY = MOUSE_POS.y - ptPos.y;
-	float magnitude = sqrt(SetaX * SetaX + SetaY * SetaY);
-	SetaX = SetaX / magnitude;
-	SetaY = SetaY / magnitude;
+	////ÃÑ¾ËÀÇ ¹æÇâº¤ÅÍ °è»ê
+	float SetaX = (MOUSE_POS.x - RenderPos.x);
+	float SetaY = (MOUSE_POS.y - RenderPos.y);
+	float magnitude = std::sqrt(SetaX * SetaX + SetaY * SetaY);
+	SetaX = ((SetaX / magnitude));
+	SetaY = ((SetaY / magnitude));
 
 	Missile->SetDir(Vec2(SetaX, SetaY));
 

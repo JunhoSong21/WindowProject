@@ -31,6 +31,7 @@ enum class GROUP_TYPE {
 	MONSTER,
 	PROJ_PLAYER,
 	PROJ_MONSTER, // PROJECTILE
+	TEXT,
 
 	END = 32,
 };
@@ -48,6 +49,7 @@ enum class SCENE_TYPE {
 enum class BRUSH_TYPE {
 	HOLLOW,
 	BLACK,
+	WHITE,
 
 	END,
 };
@@ -56,6 +58,7 @@ enum class PEN_TYPE {
 	RED,
 	GREEN,
 	BLUE,
+	WHITE,
 
 	END,
 };

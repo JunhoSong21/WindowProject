@@ -31,6 +31,7 @@ public:
 	const wstring& GetName() { return strName; }
 
 	bool IsFinish() { return finish; }
+
 	void SetFrame(int _FrameIdx) {
 		finish = false;
 		curFrm = _FrameIdx;

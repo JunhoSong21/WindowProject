@@ -96,6 +96,9 @@
     <Filter Include="Engine\04. Object\CStartScreen">
       <UniqueIdentifier>{c38dd0b9-d820-4b4d-848e-d54f674efa7b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\04. Object\CText">
+      <UniqueIdentifier>{8e38f61b-2e9b-4dac-84c4-a50da782effa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -197,6 +200,9 @@
     <ClInclude Include="Scene_Stage01.h">
       <Filter>Engine\05. Scene\Scene_Stage01</Filter>
     </ClInclude>
+    <ClInclude Include="CText.h">
+      <Filter>Engine\04. Object\CText</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CCore.cpp">
@@ -279,6 +285,9 @@
     </ClCompile>
     <ClCompile Include="Scene_Stage01.cpp">
       <Filter>Engine\05. Scene\Scene_Stage01</Filter>
+    </ClCompile>
+    <ClCompile Include="CText.cpp">
+      <Filter>Engine\04. Object\CText</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

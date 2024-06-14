@@ -2,7 +2,7 @@
 
 #include "CObject.h"
 
-class CMonster:
+class CMonster :
 	public CObject
 {
 private:

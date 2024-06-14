@@ -6,6 +6,7 @@ class CTexture;
 
 class CAnimator {
 private:
+	
 	map<wstring, CAnimation*>	mapAnim; // 모든 애니메이션
 	CAnimation*					curAnim; // 현재 재생중인 애니메이션
 	CObject*					owner;   // 애니메이터 소유 오브젝트
