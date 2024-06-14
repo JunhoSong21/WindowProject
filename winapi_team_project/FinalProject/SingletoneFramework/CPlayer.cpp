@@ -2,6 +2,7 @@
 
 #include "CPlayer.h"
 #include "CMissile.h"
+#include "math.h"
 
 #include "CKeyMgr.h"
 #include "CResMgr.h"
@@ -75,7 +76,16 @@ void CPlayer::CreateMissile() {
 	Missile->SetName(L"Missile_Player");
 	Missile->setPos(MissilePos);
 	Missile->setScale(Vec2(25.f, 25.f));
-	Missile->SetDir(Vec2(0.f, -1.f));
+	Vec2 ptPos = getPos();
+
+	//ÃÑ¾ËÀÇ ¹æÇâº¤ÅÍ °è»ê
+	float SetaX = MOUSE_POS.x - ptPos.x;
+	float SetaY = MOUSE_POS.y - ptPos.y;
+	float magnitude = sqrt(SetaX * SetaX + SetaY * SetaY);
+	SetaX = SetaX / magnitude;
+	SetaY = SetaY / magnitude;
+
+	Missile->SetDir(Vec2(SetaX, SetaY));
 
 	CreateObject(Missile, GROUP_TYPE::PROJ_PLAYER);
 }

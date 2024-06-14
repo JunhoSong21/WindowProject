@@ -32,9 +32,12 @@ void CStartScreen::Render(HDC _dc)
 {
 	Vec2 ptPos = getPos();
 
+	int ResloutionX = GetSystemMetrics(SM_CXSCREEN);
+	int ResloutionY = GetSystemMetrics(SM_CYSCREEN);
+
 	StretchBlt(_dc
 		, 0, 0
-		, 1536, 960
+		, ResloutionX, ResloutionY
 		, tex->GetDC()
 		, 0, 0
 		, 3840, 2160
