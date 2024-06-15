@@ -5,6 +5,7 @@
 #include "CObject.h"
 #include "CPlayer.h"
 #include "CMonster.h"
+#include "CObstract.h"
 
 #include "CColliderMgr.h"
 #include "CKeyMgr.h"
@@ -33,7 +34,7 @@ void Scene_Stage01::Enter() {
 	float ResloutionY = GetSystemMetrics(SM_CYSCREEN);
 
 	obj->setPos(Vec2(ResloutionX / 2, ResloutionY / 2));
-	obj->setScale(Vec2(100.f, 100.f));
+	obj->setScale(Vec2(45.f, 30.f));
 	AddObject(obj, GROUP_TYPE::PLAYER);
 
 	CCamera::Instance()->SetTarget(obj);
@@ -55,8 +56,17 @@ void Scene_Stage01::Enter() {
 		AddObject(MonsterObj, GROUP_TYPE::MONSTER);
 	}
 
+	CObstract* wall = nullptr;
+	wall = new CObstract;
+	wall->SetName(L"FURNITURE");
+	wall->setPos(Vec2(500.f, 500.f));
+	wall->setScale(Vec2(25.f, 100.f));
+	AddObject(wall, GROUP_TYPE::FURNITURE);
+
 	CColliderMgr::Instance()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::MONSTER);
 	CColliderMgr::Instance()->CheckGroup(GROUP_TYPE::MONSTER, GROUP_TYPE::PROJ_PLAYER);
+	CColliderMgr::Instance()->CheckGroup(GROUP_TYPE::FURNITURE, GROUP_TYPE::PLAYER);
+	CColliderMgr::Instance()->CheckGroup(GROUP_TYPE::FURNITURE, GROUP_TYPE::MONSTER);
 
 	//Camera Look ÁöÁ¤
 	CCamera::Instance()->SetLookAt(Resolution / 2.f);

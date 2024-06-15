@@ -1,8 +1,11 @@
 #include "pch.h"
 #include "CMonster.h"
+#include "math.h"
 
 #include "CTimeMgr.h"
 #include "CCollider.h"
+#include "CMissile.h"
+#include "CPlayer.h"
 
 CMonster::CMonster()
 	: Speed(100.f)
@@ -10,6 +13,9 @@ CMonster::CMonster()
 	, MaxDis(50.f)
 	, Dir(1)
 	, iHP(5)
+	, Theta(PI / 4.f)
+	, DirVec(Vec2(1.f, 1.f))
+	, selection(1)
 {
 	CreateCollider();
 	GetCollider()->SetScale(Vec2(42.f, 42.f));
@@ -46,6 +52,4 @@ void CMonster::OnCollisionEnter(CCollider* _pOther) {
 		if (iHP <= 0)
 			DeleteObject(this);
 	}
-
-	
 }

@@ -6,7 +6,6 @@
 #include "CObject.h"
 #include "CPlayer.h"
 #include "CMonster.h"
-#include "CText.h"
 
 #include "CColliderMgr.h"
 #include "CKeyMgr.h"
@@ -36,8 +35,6 @@ void Scene_Start::Enter() {
 	CObject* startScreen = new CStartScreen;
 	AddObject(startScreen, GROUP_TYPE::MAP);
 
-	CObject* PressEnterString = new CText;
-	AddObject(PressEnterString, GROUP_TYPE::TEXT);
 }
 
 void Scene_Start::Exit() {
