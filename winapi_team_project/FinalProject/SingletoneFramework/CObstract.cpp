@@ -7,7 +7,7 @@
 CObstract::CObstract()
 {
 	CreateCollider();
-	GetCollider()->SetScale(Vec2(25.f, 100.f));
+	GetCollider()->SetScale(Vec2(20.f, 100.f));
 }
 
 CObstract::~CObstract()
@@ -17,5 +17,6 @@ CObstract::~CObstract()
 void CObstract::Update() {
 	Vec2 curPos = getPos();
 
+	GetCollider()->SetScale(getScale());
 	setPos(curPos);
 }

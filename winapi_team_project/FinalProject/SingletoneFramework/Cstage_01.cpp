@@ -23,22 +23,31 @@ Cstage_01::~Cstage_01()
 
 void Cstage_01::Update()
 {
+	Vec2 ptPos = getPos();
+
+	setPos(ptPos);
 }
 
 void Cstage_01::Render(HDC _dc)
 {
-	Vec2 ptPos = getPos();
+	int width = (int)tex->Width();
+	int height = (int)tex->Height();
+
 
 	int ResloutionX = GetSystemMetrics(SM_CXSCREEN);
 	int ResloutionY = GetSystemMetrics(SM_CYSCREEN);
 
-	StretchBlt(_dc
-		, 0, 0
-		, ResloutionX, ResloutionY
+	Vec2 ptPos = Vec2(ResloutionX, ResloutionY);
+	Vec2 RenderPos = CCamera::Instance()->GetRenderPos(ptPos);
+
+	TransparentBlt(_dc
+		, int(RenderPos.x - (float)(width * 2))
+		, int(RenderPos.y - (float)(height * 2))
+		, width*3
+		, height*3
 		, tex->GetDC()
-		, 0, 0
-		, 3840, 2160
-		, SRCCOPY);
+		, 0, 0, width, height
+		, RGB(255, 0, 255));
 
 	CommponentRender(_dc);
 }

@@ -68,10 +68,131 @@ void Scene_Stage01::Enter() {
 	}
 
 	CObstract* wall = nullptr;
+
 	wall = new CObstract;
 	wall->SetName(L"FURNITURE");
-	wall->setPos(Vec2(500.f, 500.f));
-	wall->setScale(Vec2(25.f, 100.f));
+	wall->setPos(Vec2(310.f, 550.f));
+	wall->setScale(Vec2(20.f, 1350.f));
+	AddObject(wall, GROUP_TYPE::FURNITURE);
+
+	wall = new CObstract;
+	wall->SetName(L"FURNITURE");
+	wall->setPos(Vec2(730.f, -95.f));
+	wall->setScale(Vec2(830.f, 100.f));
+	AddObject(wall, GROUP_TYPE::FURNITURE);
+
+	wall = new CObstract;
+	wall->SetName(L"FURNITURE");
+	wall->setPos(Vec2(1135.f, 80.f));
+	wall->setScale(Vec2(20.f, 450.f));
+	AddObject(wall, GROUP_TYPE::FURNITURE);
+
+	wall = new CObstract;
+	wall->SetName(L"FURNITURE");
+	wall->setPos(Vec2(1550.f, 290.f));
+	wall->setScale(Vec2(850.f, 20.f));
+	AddObject(wall, GROUP_TYPE::FURNITURE);
+
+	wall = new CObstract;
+	wall->SetName(L"FURNITURE");
+	wall->setPos(Vec2(620.f, -30.f));
+	wall->setScale(Vec2(20.f, 195.f));
+	AddObject(wall, GROUP_TYPE::FURNITURE);
+
+	wall = new CObstract;
+	wall->SetName(L"FURNITURE");
+	wall->setPos(Vec2(620.f, 550.f));
+	wall->setScale(Vec2(20.f, 750.f));
+	AddObject(wall, GROUP_TYPE::FURNITURE);
+
+	wall = new CObstract;
+	wall->SetName(L"FURNITURE");
+	wall->setPos(Vec2(1395.f, 650.f));
+	wall->setScale(Vec2(120.f, 330.f));
+	AddObject(wall, GROUP_TYPE::FURNITURE);
+
+	wall = new CObstract;
+	wall->SetName(L"FURNITURE");
+	wall->setPos(Vec2(1785.f, 440.f));
+	wall->setScale(Vec2(20.f, 300.f));
+	AddObject(wall, GROUP_TYPE::FURNITURE);
+
+	wall = new CObstract;
+	wall->SetName(L"FURNITURE");
+	wall->setPos(Vec2(1785.f, 860.f));
+	wall->setScale(Vec2(20.f, 330.f));
+	AddObject(wall, GROUP_TYPE::FURNITURE);
+
+	wall = new CObstract;
+	wall->SetName(L"FURNITURE");
+	wall->setPos(Vec2(1965.f, 750.f));
+	wall->setScale(Vec2(20.f, 930.f));
+	AddObject(wall, GROUP_TYPE::FURNITURE);
+
+	wall = new CObstract;
+	wall->SetName(L"FURNITURE");
+	wall->setPos(Vec2(1445.f, 1135.f));
+	wall->setScale(Vec2(20.f, 230.f));
+	AddObject(wall, GROUP_TYPE::FURNITURE);
+
+	wall = new CObstract;
+	wall->SetName(L"FURNITURE");
+	wall->setPos(Vec2(930.f, 1020.f));
+	wall->setScale(Vec2(20.f, 410.f));
+	AddObject(wall, GROUP_TYPE::FURNITURE);
+
+	wall = new CObstract;
+	wall->SetName(L"FURNITURE");
+	wall->setPos(Vec2(1345.f, 920.f));
+	wall->setScale(Vec2(20.f, 210.f));
+	AddObject(wall, GROUP_TYPE::FURNITURE);
+
+	wall = new CObstract;
+	wall->SetName(L"FURNITURE");
+	wall->setPos(Vec2(1380.f, 810.f));
+	wall->setScale(Vec2(310.f, 20.f));
+	AddObject(wall, GROUP_TYPE::FURNITURE);
+
+	wall = new CObstract;
+	wall->SetName(L"FURNITURE");
+	wall->setPos(Vec2(1020.f, 810.f));
+	wall->setScale(Vec2(200.f, 20.f));
+	AddObject(wall, GROUP_TYPE::FURNITURE);
+
+	wall = new CObstract;
+	wall->SetName(L"FURNITURE");
+	wall->setPos(Vec2(1710.f, 810.f));
+	wall->setScale(Vec2(140.f, 20.f));
+	AddObject(wall, GROUP_TYPE::FURNITURE);
+
+	wall = new CObstract;
+	wall->SetName(L"FURNITURE");
+	wall->setPos(Vec2(1550.f, 1015.f));
+	wall->setScale(Vec2(430.f, 20.f));
+	AddObject(wall, GROUP_TYPE::FURNITURE);
+
+	wall = new CObstract;
+	wall->SetName(L"FURNITURE");
+	wall->setPos(Vec2(1140.f, 1225.f));
+	wall->setScale(Vec2(1680.f, 20.f));
+	AddObject(wall, GROUP_TYPE::FURNITURE);
+
+	wall = new CObstract;
+	wall->SetName(L"FURNITURE");
+	wall->setPos(Vec2(860.f, 500.f));
+	wall->setScale(Vec2(720.f, 20.f));
+	AddObject(wall, GROUP_TYPE::FURNITURE);
+
+	wall = new CObstract;
+	wall->SetName(L"FURNITURE");
+	wall->setPos(Vec2(340.f, 500.f));
+	wall->setScale(Vec2(100.f, 20.f));
+	AddObject(wall, GROUP_TYPE::FURNITURE);
+
+	wall = new CObstract;
+	wall->SetName(L"FURNITURE");
+	wall->setPos(Vec2(770.f, 915.f));
+	wall->setScale(Vec2(320.f, 20.f));
 	AddObject(wall, GROUP_TYPE::FURNITURE);
 
 	CItem* Item = nullptr;
@@ -90,7 +211,7 @@ void Scene_Stage01::Enter() {
 
 	CColliderMgr::Instance()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::MONSTER);
 	CColliderMgr::Instance()->CheckGroup(GROUP_TYPE::MONSTER, GROUP_TYPE::PROJ_PLAYER);
-	CColliderMgr::Instance()->CheckGroup(GROUP_TYPE::FURNITURE, GROUP_TYPE::PLAYER);
+	CColliderMgr::Instance()->CheckGroup(GROUP_TYPE::FURNITURE, GROUP_TYPE::PROJ_PLAYER);
 	CColliderMgr::Instance()->CheckGroup(GROUP_TYPE::FURNITURE, GROUP_TYPE::MONSTER);
 	CColliderMgr::Instance()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::ITEM);
 

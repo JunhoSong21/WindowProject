@@ -13,7 +13,7 @@ CItem::CItem()
 	: tex(nullptr)
 {
 	CreateCollider();
-	GetCollider()->SetScale(Vec2(25.f, 25.f));
+	GetCollider()->SetScale(Vec2(50.f, 50.f));
 
 	tex = CResMgr::Instance()->LoadTexture(L"ITEM", L"Texture\\bung.bmp");
 }

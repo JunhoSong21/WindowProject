@@ -52,10 +52,10 @@ void CAnimation::Render(HDC _hDC) {
 	ptPos = CCamera::Instance()->GetRenderPos(ptPos);
 	
 	TransparentBlt(_hDC
-		, (int)ptPos.x - vecFrm[curFrm].ptSlice.x / 2.f
-		, (int)ptPos.y - vecFrm[curFrm].ptSlice.y / 2.f
-		, (int)vecFrm[curFrm].ptSlice.x
-		, (int)vecFrm[curFrm].ptSlice.y
+		, (int)ptPos.x - vecFrm[curFrm].ptSlice.x-10
+		, (int)ptPos.y - vecFrm[curFrm].ptSlice.y-10
+		, (int)vecFrm[curFrm].ptSlice.x *2+30
+		, (int)vecFrm[curFrm].ptSlice.y *2+30
 		, tex->GetDC()
 		, (int)vecFrm[curFrm].ptLT.x
 		, (int)vecFrm[curFrm].ptLT.y

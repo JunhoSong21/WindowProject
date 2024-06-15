@@ -21,7 +21,7 @@ CPlayer::CPlayer()
 {
 	CreateCollider();
 	GetCollider()->SetOffsetPos(Vec2(0.f, 0.f));
-	GetCollider()->SetScale(Vec2 (45.f, 30.f));
+	GetCollider()->SetScale(Vec2 (60.f, 60.f));
 
 	CTexture* tex = CResMgr::Instance()->LoadTexture(L"PlayerTex", L"Texture\\player.bmp");
 	CreateAnimator();
@@ -37,6 +37,7 @@ CPlayer::CPlayer()
 
 	CObject::SetSel(1);
 	Attack = 0;
+	AniOn = 0;
 	/*CAnimation* Anim = GetAnimator()->FindAnimation(L"WALK_RIGHT");
 	for (UINT i = 0; i < Anim->GetMaxFrame(); ++i)
 		Anim->GetFrame(0).offSet = Vec2(0.f, -20.f);*/
@@ -50,19 +51,19 @@ void CPlayer::Update() {
 	Vec2 ptPos = getPos();
 
 	if (KEY_HOLD(KEY::W)) {
-		ptPos.y -= 200.f * fDT;
+		ptPos.y -= 400.f * fDT;
 	}
 
 	if (KEY_HOLD(KEY::S)) {
-		ptPos.y += 200.f * fDT;
+		ptPos.y += 400.f * fDT;
 	}
 
 	if (KEY_HOLD(KEY::A)) {
-		ptPos.x -= 200.f * fDT;
+		ptPos.x -= 400.f * fDT;
 	}
 
 	if (KEY_HOLD(KEY::D)) {
-		ptPos.x += 200.f * fDT;
+		ptPos.x += 400.f * fDT;
 	}
 
 	if (KEY_TAP(KEY::LBTN)) {
@@ -83,6 +84,11 @@ void CPlayer::Update() {
 		CObject::SetSel(3);
 	}
 
+	if (KEY_HOLD(KEY::W) || KEY_HOLD(KEY::A) || KEY_HOLD(KEY::S) || KEY_HOLD(KEY::D) || KEY_HOLD(KEY::LBTN) || KEY_HOLD(KEY::RBTN) || Attack != 0)
+		AniOn = 1;
+	else
+		AniOn = 0;
+
 	if (Attack == 0) {
 		switch (CObject::GetSel())
 		{
@@ -102,7 +108,8 @@ void CPlayer::Update() {
 	else
 		Attack = 0;
 	setPos(ptPos);
-	GetAnimator()->Update();
+	if (AniOn)
+		GetAnimator()->Update();
 }
 
 void CPlayer::Render(HDC _dc) {
@@ -115,19 +122,19 @@ void CPlayer::OnCollision(CCollider* _pOther) {
 	Vec2 ptPos = getPos();
 	if (OtherObj->GetName() == L"FURNITURE") {
 		if (KEY_HOLD(KEY::W)) {
-			ptPos.y += 205.f * fDT;
+			ptPos.y += 405.f * fDT;
 		}
 
 		if (KEY_HOLD(KEY::S)) {
-			ptPos.y -= 205.f * fDT;
+			ptPos.y -= 405.f * fDT;
 		}
 
 		if (KEY_HOLD(KEY::A)) {
-			ptPos.x += 205.f * fDT;
+			ptPos.x += 405.f * fDT;
 		}
 
 		if (KEY_HOLD(KEY::D)) {
-			ptPos.x -= 205.f * fDT;
+			ptPos.x -= 405.f * fDT;
 		}
 	}
 	setPos(ptPos);
@@ -169,7 +176,7 @@ void CPlayer::CreateMissile() {
 			Attack = 2.f;
 			break;
 		case 3:
-			Missile->setScale(Vec2(50.f, 50.f));
+			Missile->setScale(Vec2(100.f, 100.f));
 			Missile->Setlen(10.f);
 			Missile->SetSpd(1000.f);
 			GetAnimator()->Play(L"AttackKnife", true);
