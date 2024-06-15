@@ -16,7 +16,8 @@ CEventMgr::~CEventMgr()
 void CEventMgr::Update() {
 	// 이전 프레임에서 등록해둔 Dead Object들을 삭제한다.
 	for (size_t i = 0; i < vecDead.size(); ++i) {
-		delete vecDead[i];
+		if (vecDead[i]->IsDead())
+			delete vecDead[i];
 	}
 	vecDead.clear();
 

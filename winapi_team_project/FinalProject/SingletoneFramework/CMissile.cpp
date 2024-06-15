@@ -31,6 +31,9 @@ void CMissile::Update() {
 	}
 	else {
 		DeleteObject(this);
+		if (isItem) {
+			CreateItem();
+		}
 	}
 	setPos(ptPos);
 }
@@ -52,7 +55,7 @@ void CMissile::Render(HDC _hDC) {
 void CMissile::OnCollisionEnter(CCollider* _pOther) {
 	CObject* OtherObj = _pOther->GetObj();
 
-	if (OtherObj->GetName() == L"Monster") {
+	if (OtherObj->GetName() == L"Monster"|| OtherObj->GetName() == L"FURNITURE") {
 		DeleteObject(this);
 		if (isItem) {
 			CreateItem();

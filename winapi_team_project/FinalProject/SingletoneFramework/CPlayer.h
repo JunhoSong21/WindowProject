@@ -9,6 +9,7 @@ private:
 	void CreateMissile();
 	void ThrowItem();
 	float Attack;
+	bool AniOn;
 
 	CLONE(CPlayer);
 public:
