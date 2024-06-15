@@ -96,11 +96,17 @@
     <Filter Include="Engine\04. Object\CStartScreen">
       <UniqueIdentifier>{c38dd0b9-d820-4b4d-848e-d54f674efa7b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\04. Object\CText">
-      <UniqueIdentifier>{8e38f61b-2e9b-4dac-84c4-a50da782effa}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\04. Object\CObstract">
       <UniqueIdentifier>{e51ff8f4-1ae6-435d-a178-b42cc65a5aed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\CItem">
+      <UniqueIdentifier>{8e38f61b-2e9b-4dac-84c4-a50da782effa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\CScore">
+      <UniqueIdentifier>{9b8ee9d6-1214-4440-9a28-ac8a7ecc6674}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\Cstage_01">
+      <UniqueIdentifier>{77ee3079-68e0-4371-9e9a-619626ef3631}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -206,6 +212,15 @@
     <ClInclude Include="CObstract.h">
       <Filter>Engine\04. Object\CObstract</Filter>
     </ClInclude>
+    <ClInclude Include="CItem.h">
+      <Filter>Engine\04. Object\CItem</Filter>
+    </ClInclude>
+    <ClInclude Include="CScore.h">
+      <Filter>Engine\04. Object\CScore</Filter>
+    </ClInclude>
+    <ClInclude Include="Cstage_01.h">
+      <Filter>Engine\04. Object\Cstage_01</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CCore.cpp">
@@ -291,6 +306,15 @@
     </ClCompile>
     <ClCompile Include="CObstract.cpp">
       <Filter>Engine\04. Object\CObstract</Filter>
+    </ClCompile>
+    <ClCompile Include="CItem.cpp">
+      <Filter>Engine\04. Object\CItem</Filter>
+    </ClCompile>
+    <ClCompile Include="CScore.cpp">
+      <Filter>Engine\04. Object\CScore</Filter>
+    </ClCompile>
+    <ClCompile Include="Cstage_01.cpp">
+      <Filter>Engine\04. Object\Cstage_01</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

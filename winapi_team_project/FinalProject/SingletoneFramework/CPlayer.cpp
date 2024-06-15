@@ -15,6 +15,7 @@
 #include "CCollider.h"
 #include "CAnimator.h"
 #include "CAnimation.h"
+#include "CScore.h"
 
 CPlayer::CPlayer()
 {
@@ -34,7 +35,7 @@ CPlayer::CPlayer()
 	GetAnimator()->CreateAnimation(L"Reload", tex, Vec2(0.f, 80.f), Vec2(45.f, 30.f), Vec2(45.f, 0.f), 0.1f, 6.f);
 	GetAnimator()->CreateAnimation(L"Throaw", tex, Vec2(0.f, 110.f), Vec2(45.f, 50.f), Vec2(45.f, 0.f), 0.1f, 4.f);
 
-	Selection = 1;
+	CObject::SetSel(1);
 	Attack = 0;
 	/*CAnimation* Anim = GetAnimator()->FindAnimation(L"WALK_RIGHT");
 	for (UINT i = 0; i < Anim->GetMaxFrame(); ++i)
@@ -68,18 +69,22 @@ void CPlayer::Update() {
 		CreateMissile();
 	}
 
+	if (KEY_TAP(KEY::RBTN)) {
+		ThrowItem();
+	}
+
 	if (KEY_TAP(KEY::Key_1)) {
-		Selection = 1;
+		CObject::SetSel(1);
 	}
 	if (KEY_TAP(KEY::Key_2)) {
-		Selection = 2;
+		CObject::SetSel(2);
 	}
 	if (KEY_TAP(KEY::Key_3)) {
-		Selection = 3;
+		CObject::SetSel(3);
 	}
 
 	if (Attack == 0) {
-		switch (Selection)
+		switch (CObject::GetSel())
 		{
 		case 1:
 			GetAnimator()->Play(L"WalkShotGun", true);
@@ -97,7 +102,6 @@ void CPlayer::Update() {
 	else
 		Attack = 0;
 	setPos(ptPos);
-
 	GetAnimator()->Update();
 }
 
@@ -131,12 +135,12 @@ void CPlayer::OnCollision(CCollider* _pOther) {
 
 void CPlayer::CreateMissile() {
 	Vec2 MissilePos = getPos();
-	MissilePos.y -= getScale().y / 2.f;
 
 	CMissile* Missile = new CMissile;
 	Missile->SetName(L"Missile_Player");
 	Missile->setPos(MissilePos);
 	Missile->setScale(Vec2(25.f, 25.f));
+	Missile->SetItem(0);
 	Vec2 ptPos = getPos();
 	Vec2 RenderPos = CCamera::Instance()->GetRenderPos(ptPos);
 	Vec2 ptScale = getScale();
@@ -150,26 +154,58 @@ void CPlayer::CreateMissile() {
 	Missile->SetDir(Vec2(SetaX, SetaY));
 
 	if (Attack == 0) {
-		switch (Selection)
+		switch (CObject::GetSel())
 		{
 		case 1:
-			Missile->Setlen(100.f);
+			Missile->Setlen(200.f);
+			Missile->SetSpd(1000.f);
 			GetAnimator()->Play(L"AttackShotGun", true);
 			Attack = 3.f;
 			break;
 		case 2:
-			Missile->Setlen(300.f);
+			Missile->Setlen(500.f);
+			Missile->SetSpd(600.f);
 			GetAnimator()->Play(L"AttackHandGun", true);
 			Attack = 2.f;
 			break;
 		case 3:
 			Missile->setScale(Vec2(50.f, 50.f));
 			Missile->Setlen(10.f);
+			Missile->SetSpd(1000.f);
 			GetAnimator()->Play(L"AttackKnife", true);
 			Attack = 5.f;
 			break;
 		}
 	}
+
+	CreateObject(Missile, GROUP_TYPE::PROJ_PLAYER);
+}
+
+void CPlayer::ThrowItem() {
+	Vec2 MissilePos = getPos();
+
+	CMissile* Missile = new CMissile;
+	Missile->SetName(L"Missile_Player");
+	Missile->setPos(MissilePos);
+	Missile->setScale(Vec2(25.f, 25.f));
+	Missile->SetItem(1);
+	Vec2 ptPos = getPos();
+	Vec2 RenderPos = CCamera::Instance()->GetRenderPos(ptPos);
+	Vec2 ptScale = getScale();
+
+	////ÃÑ¾ËÀÇ ¹æÇâº¤ÅÍ °è»ê
+	float SetaX = (MOUSE_POS.x - RenderPos.x + ptScale.x);
+	float SetaY = (MOUSE_POS.y - RenderPos.y + ptScale.y);
+	float magnitude = std::sqrt(SetaX * SetaX + SetaY * SetaY);
+	SetaX = ((SetaX / magnitude));
+	SetaY = ((SetaY / magnitude));
+	Missile->SetDir(Vec2(SetaX, SetaY));
+
+
+	Missile->Setlen(500.f);
+	Missile->SetSpd(600.f);
+	GetAnimator()->Play(L"Throaw", true);
+	Attack = 4.f;
 
 	CreateObject(Missile, GROUP_TYPE::PROJ_PLAYER);
 }

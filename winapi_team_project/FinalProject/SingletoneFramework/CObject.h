@@ -17,6 +17,7 @@ private:
 	CAnimator*	animator;
 
 	bool		alive;
+	int			Selection;
 
 public:
 	CObject();
@@ -36,6 +37,8 @@ public:
 	CAnimator* GetAnimator() { return animator; }
 
 	bool IsDead() { return !alive; }
+	void SetSel(int _Sel) { Selection = _Sel; }
+	int GetSel() { return Selection; }
 
 	void CreateCollider();
 	void CreateAnimator();

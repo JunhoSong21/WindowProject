@@ -10,6 +10,7 @@ CObject::CObject()
 	, collider(nullptr)
 	, animator(nullptr)
 	, alive(true)
+	, Selection(1)
 {
 }
 
@@ -20,6 +21,7 @@ CObject::CObject(const CObject& _origin)
 	, collider(nullptr)
 	, animator(nullptr)
 	, alive(true)
+	, Selection(1)
 {
 	if (_origin.collider) {
 		collider = new CCollider(*_origin.collider);

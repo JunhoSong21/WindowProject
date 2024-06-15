@@ -3,10 +3,14 @@
 
 #include "CCollider.h"
 #include "CTimeMgr.h"
+#include "CItem.h"
+#include "func.h"
+#include "CScore.h"
 
 CMissile::CMissile()
 	: Theta(PI / 4.f)
 	, Dir(Vec2(1.f, 1.f))
+	, Speed(600.f)
 {
 	Dir.Normalize();
 	CreateCollider();
@@ -21,9 +25,9 @@ void CMissile::Update() {
 	Vec2 ptPos = getPos();
 	GetCollider()->SetScale(getScale());
 	if (Distance < length) {
-		ptPos.x += 600.f * Dir.x * fDT;
-		ptPos.y += 600.f * Dir.y * fDT;
-		Distance += 500.f * fDT;
+		ptPos.x += Speed * Dir.x * fDT;
+		ptPos.y += Speed * Dir.y * fDT;
+		Distance += Speed * fDT;
 	}
 	else {
 		DeleteObject(this);
@@ -50,5 +54,19 @@ void CMissile::OnCollisionEnter(CCollider* _pOther) {
 
 	if (OtherObj->GetName() == L"Monster") {
 		DeleteObject(this);
+		if (isItem) {
+			CreateItem();
+		}
 	}
+}
+
+void CMissile::CreateItem() {
+	Vec2 ItemPos = getPos();
+
+	CItem* Item = new CItem;
+	Item->SetName(L"ITEM");
+	Item->setPos(ItemPos);
+	Item->setScale(Vec2(25.f, 25.f));
+
+	CreateObject(Item, GROUP_TYPE::ITEM);
 }

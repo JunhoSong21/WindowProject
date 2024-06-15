@@ -5,6 +5,8 @@
 class Scene_Stage01 :
     public CScene
 {
+private:
+
 public:
     Scene_Stage01();
     ~Scene_Stage01();
