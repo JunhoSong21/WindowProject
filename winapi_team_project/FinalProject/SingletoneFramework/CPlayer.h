@@ -6,8 +6,8 @@ class CTexture;
 class CPlayer : 
 	public CObject {
 private:
-	int Selection;
 	void CreateMissile();
+	void ThrowItem();
 	float Attack;
 
 	CLONE(CPlayer);
@@ -19,4 +19,3 @@ public:
 	virtual void Render(HDC _dc);
 	virtual void OnCollision(CCollider* _pOther);
 };
-

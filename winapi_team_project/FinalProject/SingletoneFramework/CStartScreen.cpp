@@ -23,9 +23,6 @@ CStartScreen::~CStartScreen()
 
 void CStartScreen::Update()
 {
-	Vec2 ptPos = getPos();
-
-	setPos(ptPos);
 }
 
 void CStartScreen::Render(HDC _dc)
