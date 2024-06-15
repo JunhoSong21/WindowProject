@@ -99,6 +99,9 @@
     <Filter Include="Engine\04. Object\CText">
       <UniqueIdentifier>{8e38f61b-2e9b-4dac-84c4-a50da782effa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\04. Object\CObstract">
+      <UniqueIdentifier>{e51ff8f4-1ae6-435d-a178-b42cc65a5aed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -200,8 +203,8 @@
     <ClInclude Include="Scene_Stage01.h">
       <Filter>Engine\05. Scene\Scene_Stage01</Filter>
     </ClInclude>
-    <ClInclude Include="CText.h">
-      <Filter>Engine\04. Object\CText</Filter>
+    <ClInclude Include="CObstract.h">
+      <Filter>Engine\04. Object\CObstract</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -286,8 +289,8 @@
     <ClCompile Include="Scene_Stage01.cpp">
       <Filter>Engine\05. Scene\Scene_Stage01</Filter>
     </ClCompile>
-    <ClCompile Include="CText.cpp">
-      <Filter>Engine\04. Object\CText</Filter>
+    <ClCompile Include="CObstract.cpp">
+      <Filter>Engine\04. Object\CObstract</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -10,8 +10,10 @@ private:
 	float	Speed;
 	float	MaxDis; // 최대 이동거리
 	int		Dir; // 방향(1, -1)
-
+	int		selection; //무기
 	int		iHP;
+	float	Theta;		//
+	Vec2	DirVec;
 
 public:
 	CMonster();

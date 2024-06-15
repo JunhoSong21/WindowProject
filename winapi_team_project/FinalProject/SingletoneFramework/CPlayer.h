@@ -8,6 +8,7 @@ class CPlayer :
 private:
 	int Selection;
 	void CreateMissile();
+	float Attack;
 
 	CLONE(CPlayer);
 public:
@@ -16,5 +17,6 @@ public:
 
 	virtual void Update();
 	virtual void Render(HDC _dc);
+	virtual void OnCollision(CCollider* _pOther);
 };
 
