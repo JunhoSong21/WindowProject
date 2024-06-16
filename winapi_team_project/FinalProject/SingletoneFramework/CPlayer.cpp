@@ -13,6 +13,7 @@
 #include "CScene.h"
 #include "CTexture.h"
 #include "CCollider.h"
+#include "CFinding.h"
 #include "CAnimator.h"
 #include "CAnimation.h"
 #include "CScore.h"
@@ -22,6 +23,10 @@ CPlayer::CPlayer()
 	CreateCollider();
 	GetCollider()->SetOffsetPos(Vec2(0.f, 0.f));
 	GetCollider()->SetScale(Vec2 (60.f, 60.f));
+
+	CreateFinding();
+	GetFinding()->SetOffsetPos(Vec2(0.f, 0.f));
+	GetFinding()->SetScale(Vec2(100.f, 100.f));
 
 	CTexture* tex = CResMgr::Instance()->LoadTexture(L"PlayerTex", L"Texture\\player.bmp");
 	CreateAnimator();
@@ -141,26 +146,25 @@ void CPlayer::OnCollision(CCollider* _pOther) {
 }
 
 void CPlayer::CreateMissile() {
-	Vec2 MissilePos = getPos();
-
-	CMissile* Missile = new CMissile;
-	Missile->SetName(L"Missile_Player");
-	Missile->setPos(MissilePos);
-	Missile->setScale(Vec2(25.f, 25.f));
-	Missile->SetItem(0);
-	Vec2 ptPos = getPos();
-	Vec2 RenderPos = CCamera::Instance()->GetRenderPos(ptPos);
-	Vec2 ptScale = getScale();
-
-	////ÃÑ¾ËÀÇ ¹æÇâº¤ÅÍ °è»ê
-	float SetaX = (MOUSE_POS.x - RenderPos.x + ptScale.x);
-	float SetaY = (MOUSE_POS.y - RenderPos.y + ptScale.y);
-	float magnitude = std::sqrt(SetaX * SetaX + SetaY * SetaY);
-	SetaX = ((SetaX / magnitude));
-	SetaY = ((SetaY / magnitude));
-	Missile->SetDir(Vec2(SetaX, SetaY));
-
 	if (Attack == 0) {
+		Vec2 MissilePos = getPos();
+
+		CMissile* Missile = new CMissile;
+		Missile->SetName(L"Missile_Player");
+		Missile->setPos(MissilePos);
+		Missile->setScale(Vec2(25.f, 25.f));
+		Missile->SetItem(0);
+		Vec2 ptPos = getPos();
+		Vec2 RenderPos = CCamera::Instance()->GetRenderPos(ptPos);
+
+		////ÃÑ¾ËÀÇ ¹æÇâº¤ÅÍ °è»ê
+		float SetaX = (MOUSE_POS.x - RenderPos.x);
+		float SetaY = (MOUSE_POS.y - RenderPos.y);
+		float magnitude = std::sqrt(SetaX * SetaX + SetaY * SetaY);
+		SetaX = ((SetaX / magnitude));
+		SetaY = ((SetaY / magnitude));
+		Missile->SetDir(Vec2(SetaX, SetaY));
+
 		switch (CObject::GetSel())
 		{
 		case 1:
@@ -183,36 +187,38 @@ void CPlayer::CreateMissile() {
 			Attack = 5.f;
 			break;
 		}
-	}
 
-	CreateObject(Missile, GROUP_TYPE::PROJ_PLAYER);
+		CreateObject(Missile, GROUP_TYPE::PROJ_PLAYER);
+	}
 }
 
 void CPlayer::ThrowItem() {
-	Vec2 MissilePos = getPos();
+	if (Attack == 0) {
+		Vec2 MissilePos = getPos();
 
-	CMissile* Missile = new CMissile;
-	Missile->SetName(L"Missile_Player");
-	Missile->setPos(MissilePos);
-	Missile->setScale(Vec2(25.f, 25.f));
-	Missile->SetItem(1);
-	Vec2 ptPos = getPos();
-	Vec2 RenderPos = CCamera::Instance()->GetRenderPos(ptPos);
-	Vec2 ptScale = getScale();
+		CMissile* Missile = new CMissile;
+		Missile->SetName(L"Missile_Player");
+		Missile->setPos(MissilePos);
+		Missile->setScale(Vec2(25.f, 25.f));
+		Missile->SetItem(1);
+		Vec2 ptPos = getPos();
+		Vec2 RenderPos = CCamera::Instance()->GetRenderPos(ptPos);
+		Vec2 ptScale = getScale();
 
-	////ÃÑ¾ËÀÇ ¹æÇâº¤ÅÍ °è»ê
-	float SetaX = (MOUSE_POS.x - RenderPos.x + ptScale.x);
-	float SetaY = (MOUSE_POS.y - RenderPos.y + ptScale.y);
-	float magnitude = std::sqrt(SetaX * SetaX + SetaY * SetaY);
-	SetaX = ((SetaX / magnitude));
-	SetaY = ((SetaY / magnitude));
-	Missile->SetDir(Vec2(SetaX, SetaY));
+		////ÃÑ¾ËÀÇ ¹æÇâº¤ÅÍ °è»ê
+		float SetaX = (MOUSE_POS.x - RenderPos.x + ptScale.x);
+		float SetaY = (MOUSE_POS.y - RenderPos.y + ptScale.y);
+		float magnitude = std::sqrt(SetaX * SetaX + SetaY * SetaY);
+		SetaX = ((SetaX / magnitude));
+		SetaY = ((SetaY / magnitude));
+		Missile->SetDir(Vec2(SetaX, SetaY));
 
 
-	Missile->Setlen(500.f);
-	Missile->SetSpd(600.f);
-	GetAnimator()->Play(L"Throaw", true);
-	Attack = 4.f;
+		Missile->Setlen(500.f);
+		Missile->SetSpd(600.f);
+		GetAnimator()->Play(L"Throaw", true);
+		Attack = 4.f;
 
-	CreateObject(Missile, GROUP_TYPE::PROJ_PLAYER);
+		CreateObject(Missile, GROUP_TYPE::PROJ_PLAYER);
+	}
 }

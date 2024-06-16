@@ -12,8 +12,8 @@ private:
 	int		Dir; // 방향(1, -1)
 	int		selection; //무기
 	int		iHP;
-	float	Theta;		//
-	Vec2	DirVec;
+	float Attack;
+	Vec2	DirVec;		//바라보는 방향
 
 public:
 	CMonster();
@@ -25,10 +25,12 @@ public:
 
 	float GetSpeed() { return Speed; }
 	Vec2 GetCenterPos() { return CenterPos; }
+	Vec2 GetDirV() { return DirVec; }
 
 	void SetSpeed(float spd) { Speed = spd; }
 	void SetMoveDist(float dis) { MaxDis = dis; }
 	void SetCenterPos(Vec2 _Pos) { CenterPos = _Pos; }
 
 	virtual void OnCollisionEnter(CCollider* _pOther);
+	virtual void OnFinding(CFinding* _pOther);
 };

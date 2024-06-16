@@ -143,6 +143,8 @@
     <ClInclude Include="CColliderMgr.h" />
     <ClInclude Include="CCore.h" />
     <ClInclude Include="CEventMgr.h" />
+    <ClInclude Include="CFinding.h" />
+    <ClInclude Include="CFindingMgr.h" />
     <ClInclude Include="CItem.h" />
     <ClInclude Include="CKeyMgr.h" />
     <ClInclude Include="CObstract.h" />
@@ -182,6 +184,8 @@
     <ClCompile Include="CColliderMgr.cpp" />
     <ClCompile Include="CCore.cpp" />
     <ClCompile Include="CEventMgr.cpp" />
+    <ClCompile Include="CFinding.cpp" />
+    <ClCompile Include="CFindingMgr.cpp" />
     <ClCompile Include="CItem.cpp" />
     <ClCompile Include="CKeyMgr.cpp" />
     <ClCompile Include="CObstract.cpp" />

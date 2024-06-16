@@ -11,6 +11,7 @@
 #include "Cstage_01.h"
 
 #include "CColliderMgr.h"
+#include "CFindingMgr.h"
 #include "CKeyMgr.h"
 #include "CPathMgr.h"
 #include "CTexture.h"
@@ -202,18 +203,13 @@ void Scene_Stage01::Enter() {
 	Item->setScale(Vec2(25.f, 25.f));
 	AddObject(Item, GROUP_TYPE::ITEM);
 
-	CScore* Score = nullptr;
-	Score = new CScore;
-	Score->SetName(L"SCORE");
-	Score->setPos(Vec2(1200.f, 0.f));
-	Score->setScale(Vec2(25.f, 25.f));
-	AddObject(Score, GROUP_TYPE::SCORE);
-
 	CColliderMgr::Instance()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::MONSTER);
 	CColliderMgr::Instance()->CheckGroup(GROUP_TYPE::MONSTER, GROUP_TYPE::PROJ_PLAYER);
 	CColliderMgr::Instance()->CheckGroup(GROUP_TYPE::FURNITURE, GROUP_TYPE::PROJ_PLAYER);
+	CColliderMgr::Instance()->CheckGroup(GROUP_TYPE::FURNITURE, GROUP_TYPE::PROJ_MONSTER);
 	CColliderMgr::Instance()->CheckGroup(GROUP_TYPE::FURNITURE, GROUP_TYPE::MONSTER);
 	CColliderMgr::Instance()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::ITEM);
+	CFindingMgr::Instance()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::MONSTER);
 
 	//Camera Look ÁöÁ¤
 	CCamera::Instance()->SetLookAt(Resolution / 2.f);

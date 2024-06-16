@@ -2,12 +2,14 @@
 #include "CObject.h"
 #include "CKeyMgr.h"
 #include "CCollider.h"
+#include "CFinding.h"
 #include "CAnimator.h"
 
 CObject::CObject()
 	: ptPos{}
 	, ptScale{}
 	, collider(nullptr)
+	, finding(nullptr)
 	, animator(nullptr)
 	, alive(true)
 	, Selection(1)
@@ -19,6 +21,7 @@ CObject::CObject(const CObject& _origin)
 	, ptPos(_origin.ptPos)
 	, ptScale(_origin.ptScale)
 	, collider(nullptr)
+	, finding(nullptr)
 	, animator(nullptr)
 	, alive(true)
 	, Selection(1)
@@ -26,6 +29,11 @@ CObject::CObject(const CObject& _origin)
 	if (_origin.collider) {
 		collider = new CCollider(*_origin.collider);
 		collider->owner = this;
+	}
+
+	if (_origin.finding) {
+		finding = new CFinding(*_origin.finding);
+		finding->owner = this;
 	}
 
 	if (_origin.animator) {
@@ -37,6 +45,9 @@ CObject::CObject(const CObject& _origin)
 CObject::~CObject() {
 	if (nullptr != collider)
 		delete collider;
+
+	if (nullptr != finding)
+		delete finding;
 
 	if (nullptr != animator) {
 		delete animator;
@@ -57,11 +68,16 @@ void CObject::Render(HDC _hDC) {
 void CObject::FinalUpdate() {
 	if (collider)
 		collider->FinalUpdate();
+	if (finding)
+		finding->FinalUpdate();
 }
 
 void CObject::CommponentRender(HDC _hDC) {
 	if (nullptr != collider)
 		collider->Render(_hDC);
+
+	if (nullptr != finding)
+		finding->Render(_hDC);
 
 	if (nullptr != animator) {
 		animator->Render(_hDC);
@@ -71,6 +87,11 @@ void CObject::CommponentRender(HDC _hDC) {
 void CObject::CreateCollider() {
 	collider = new CCollider;
 	collider->owner = this;
+}
+
+void CObject::CreateFinding() {
+	finding = new CFinding;
+	finding->owner = this;
 }
 
 void CObject::CreateAnimator() {
