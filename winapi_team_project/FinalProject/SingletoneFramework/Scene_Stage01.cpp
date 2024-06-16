@@ -37,15 +37,15 @@ void Scene_Stage01::Update() {
 void Scene_Stage01::Enter() {
 	// Object Ãß°¡
 	CScene::ChangePoint(1);
+	float ResloutionX = GetSystemMetrics(SM_CXSCREEN);
+	float ResloutionY = GetSystemMetrics(SM_CYSCREEN);
 	Cstage_01* map = new Cstage_01;
 	map->SetName(L"Stage_01");
+	map->setPos(Vec2(ResloutionX / 2, ResloutionY / 2));
 	AddObject(map, GROUP_TYPE::MAP);
 	
 
 	CObject* obj = new CPlayer;
-
-	float ResloutionX = GetSystemMetrics(SM_CXSCREEN);
-	float ResloutionY = GetSystemMetrics(SM_CYSCREEN);
 
 	CCamera::Instance()->SetCamera(Vec2(1500.f, 1150.f));
 
