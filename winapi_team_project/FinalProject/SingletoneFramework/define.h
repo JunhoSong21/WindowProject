@@ -34,11 +34,12 @@ enum class GROUP_TYPE {
 	PROJ_PLAYER,
 	PROJ_MONSTER, // PROJECTILE
 
-	END = 32,
+	END = 10,
 };
 
 enum class SCENE_TYPE {
 	START,
+	STAGE_010,
 	STAGE_01,
 	STAGE_02,
 	STAGE_03,
@@ -68,7 +69,6 @@ enum class EVENT_TYPE {
 	CREATE_OBJECT,
 	DELETE_OBJECT,
 	SCENE_CHANGE,
-
 
 	END,
 };

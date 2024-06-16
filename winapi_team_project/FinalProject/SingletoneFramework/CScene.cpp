@@ -60,11 +60,11 @@ void CScene::Render(HDC _hDC) {
 	float ResloutionX = GetSystemMetrics(SM_CXSCREEN);
 	float ResloutionY = GetSystemMetrics(SM_CYSCREEN);
 
-	RECT Bkrt = { -ResloutionX ,-ResloutionY ,ResloutionX * 2 ,ResloutionY * 2 };
+	/*RECT Bkrt = { -ResloutionX ,-ResloutionY ,ResloutionX * 2 ,ResloutionY * 2 };
 	HBRUSH hBrush = CreateSolidBrush(RGB(RR, GG, BB));
 	HBRUSH oldBrush = (HBRUSH)SelectObject(_hDC, hBrush);
 	FillRect(_hDC, &Bkrt, oldBrush);
-	DeleteObject(oldBrush);
+	DeleteObject(oldBrush);*/
 
 	for (UINT i = 0; i < (UINT)GROUP_TYPE::END; ++i) {
 		vector<CObject*>::iterator iter = arrObj[i].begin();

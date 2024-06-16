@@ -8,7 +8,7 @@
 #include "CObstract.h"
 #include "CItem.h"
 #include "CScore.h"
-#include "Cstage_01.h"
+#include "CStage_01.h"
 
 #include "CColliderMgr.h"
 #include "CFindingMgr.h"
@@ -18,38 +18,40 @@
 #include "CSceneMgr.h"
 #include "CCamera.h"
 #include "CResMgr.h"
+#include "CSound.h"
 
-Scene_Stage01::Scene_Stage01() {
-
+Scene_Stage01::Scene_Stage01() 
+{
 }
 
-Scene_Stage01::~Scene_Stage01() {
-
+Scene_Stage01::~Scene_Stage01() 
+{
 }
 
 void Scene_Stage01::Update() {
 	CScene::Update();
+
 	if (KEY_TAP(KEY::R)) {
 		ChangeScene(SCENE_TYPE::STAGE_01);
 	}
 }
 
 void Scene_Stage01::Enter() {
+	
 	// Object Ãß°¡
 	CScene::ChangePoint(1);
 	float ResloutionX = GetSystemMetrics(SM_CXSCREEN);
 	float ResloutionY = GetSystemMetrics(SM_CYSCREEN);
 	Cstage_01* map = new Cstage_01;
 	map->SetName(L"Stage_01");
-	map->setPos(Vec2(ResloutionX / 2, ResloutionY / 2));
+	map->setPos(Vec2(ResloutionX, ResloutionY));
 	AddObject(map, GROUP_TYPE::MAP);
 	
-
 	CObject* obj = new CPlayer;
 
-	CCamera::Instance()->SetCamera(Vec2(1500.f, 1150.f));
+	CCamera::Instance()->SetCamera(Vec2(1760.f, 1120.f));
 
-	obj->setPos(Vec2(1500.f, 1150.f));
+	obj->setPos(Vec2(1760.f, 1120.f));
 	obj->setScale(Vec2(45.f, 30.f));
 	obj->SetName(L"PLAYER");
 	AddObject(obj, GROUP_TYPE::PLAYER);
@@ -83,137 +85,145 @@ void Scene_Stage01::Enter() {
 	}
 
 	CObstract* wall = nullptr;
+	ResloutionX = 0;
+	ResloutionY = 0;
 
 	wall = new CObstract;
 	wall->SetName(L"FURNITURE");
-	wall->setPos(Vec2(310.f, 550.f));
-	wall->setScale(Vec2(20.f, 1350.f));
+	wall->setPos(Vec2(ResloutionX / 2 + 310.f, ResloutionY / 2 + 550.f));
+	wall->setScale(Vec2(16.f, 1350.f));
 	AddObject(wall, GROUP_TYPE::FURNITURE);
 
 	wall = new CObstract;
 	wall->SetName(L"FURNITURE");
-	wall->setPos(Vec2(730.f, -95.f));
+	wall->setPos(Vec2(ResloutionX / 2 + 730.f, ResloutionY / 2 - 85.f));
 	wall->setScale(Vec2(830.f, 100.f));
 	AddObject(wall, GROUP_TYPE::FURNITURE);
 
 	wall = new CObstract;
 	wall->SetName(L"FURNITURE");
-	wall->setPos(Vec2(1135.f, 80.f));
+	wall->setPos(Vec2(ResloutionX / 2 + 1135.f, ResloutionY / 2 + 80.f));
 	wall->setScale(Vec2(20.f, 450.f));
 	AddObject(wall, GROUP_TYPE::FURNITURE);
 
 	wall = new CObstract;
 	wall->SetName(L"FURNITURE");
-	wall->setPos(Vec2(1550.f, 290.f));
+	wall->setPos(Vec2(ResloutionX / 2 + 1550.f, ResloutionY / 2 + 290.f));
 	wall->setScale(Vec2(850.f, 20.f));
 	AddObject(wall, GROUP_TYPE::FURNITURE);
 
 	wall = new CObstract;
 	wall->SetName(L"FURNITURE");
-	wall->setPos(Vec2(620.f, -30.f));
+	wall->setPos(Vec2(ResloutionX / 2 + 620.f, ResloutionY / 2 + -30.f));
 	wall->setScale(Vec2(20.f, 195.f));
 	AddObject(wall, GROUP_TYPE::FURNITURE);
 
 	wall = new CObstract;
 	wall->SetName(L"FURNITURE");
-	wall->setPos(Vec2(620.f, 550.f));
+	wall->setPos(Vec2(ResloutionX / 2 + 620.f, ResloutionY / 2 + 550.f));
 	wall->setScale(Vec2(20.f, 750.f));
 	AddObject(wall, GROUP_TYPE::FURNITURE);
 
 	wall = new CObstract;
 	wall->SetName(L"FURNITURE");
-	wall->setPos(Vec2(1395.f, 650.f));
+	wall->setPos(Vec2(ResloutionX / 2 + 1395.f, ResloutionY / 2 + 650.f));
 	wall->setScale(Vec2(120.f, 330.f));
 	AddObject(wall, GROUP_TYPE::FURNITURE);
 
 	wall = new CObstract;
 	wall->SetName(L"FURNITURE");
-	wall->setPos(Vec2(1785.f, 440.f));
+	wall->setPos(Vec2(ResloutionX / 2 + 1785.f, ResloutionY / 2 + 440.f));
 	wall->setScale(Vec2(20.f, 300.f));
 	AddObject(wall, GROUP_TYPE::FURNITURE);
 
 	wall = new CObstract;
 	wall->SetName(L"FURNITURE");
-	wall->setPos(Vec2(1785.f, 860.f));
+	wall->setPos(Vec2(ResloutionX / 2 + 1785.f, ResloutionY / 2 + 860.f));
 	wall->setScale(Vec2(20.f, 330.f));
 	AddObject(wall, GROUP_TYPE::FURNITURE);
 
 	wall = new CObstract;
 	wall->SetName(L"FURNITURE");
-	wall->setPos(Vec2(1965.f, 750.f));
+	wall->setPos(Vec2(ResloutionX / 2 + 1965.f, ResloutionY / 2 + 750.f));
 	wall->setScale(Vec2(20.f, 930.f));
 	AddObject(wall, GROUP_TYPE::FURNITURE);
 
 	wall = new CObstract;
 	wall->SetName(L"FURNITURE");
-	wall->setPos(Vec2(1445.f, 1135.f));
+	wall->setPos(Vec2(ResloutionX / 2 + 1445.f, ResloutionY / 2 + 1135.f));
 	wall->setScale(Vec2(20.f, 230.f));
 	AddObject(wall, GROUP_TYPE::FURNITURE);
 
 	wall = new CObstract;
 	wall->SetName(L"FURNITURE");
-	wall->setPos(Vec2(930.f, 1020.f));
+	wall->setPos(Vec2(ResloutionX / 2 + 930.f, ResloutionY / 2 + 1020.f));
 	wall->setScale(Vec2(20.f, 410.f));
 	AddObject(wall, GROUP_TYPE::FURNITURE);
 
 	wall = new CObstract;
 	wall->SetName(L"FURNITURE");
-	wall->setPos(Vec2(1345.f, 920.f));
+	wall->setPos(Vec2(ResloutionX / 2 + 1345.f, ResloutionY / 2 + 920.f));
 	wall->setScale(Vec2(20.f, 210.f));
 	AddObject(wall, GROUP_TYPE::FURNITURE);
 
 	wall = new CObstract;
 	wall->SetName(L"FURNITURE");
-	wall->setPos(Vec2(1380.f, 810.f));
+	wall->setPos(Vec2(ResloutionX / 2 + 1380.f, ResloutionY / 2 + 810.f));
 	wall->setScale(Vec2(310.f, 20.f));
 	AddObject(wall, GROUP_TYPE::FURNITURE);
 
 	wall = new CObstract;
 	wall->SetName(L"FURNITURE");
-	wall->setPos(Vec2(1020.f, 810.f));
+	wall->setPos(Vec2(ResloutionX / 2 + 1020.f, ResloutionY / 2 + 810.f));
 	wall->setScale(Vec2(200.f, 20.f));
 	AddObject(wall, GROUP_TYPE::FURNITURE);
 
 	wall = new CObstract;
 	wall->SetName(L"FURNITURE");
-	wall->setPos(Vec2(1710.f, 810.f));
+	wall->setPos(Vec2(ResloutionX / 2 + 1710.f, ResloutionY / 2 + 810.f));
 	wall->setScale(Vec2(140.f, 20.f));
 	AddObject(wall, GROUP_TYPE::FURNITURE);
 
 	wall = new CObstract;
 	wall->SetName(L"FURNITURE");
-	wall->setPos(Vec2(1550.f, 1015.f));
+	wall->setPos(Vec2(ResloutionX / 2 + 1550.f, ResloutionY / 2 + 1015.f));
 	wall->setScale(Vec2(430.f, 20.f));
 	AddObject(wall, GROUP_TYPE::FURNITURE);
 
 	wall = new CObstract;
 	wall->SetName(L"FURNITURE");
-	wall->setPos(Vec2(1140.f, 1225.f));
+	wall->setPos(Vec2(ResloutionX / 2 + 1140.f, ResloutionY / 2 + 1225.f));
 	wall->setScale(Vec2(1680.f, 20.f));
 	AddObject(wall, GROUP_TYPE::FURNITURE);
 
 	wall = new CObstract;
 	wall->SetName(L"FURNITURE");
-	wall->setPos(Vec2(860.f, 500.f));
+	wall->setPos(Vec2(ResloutionX / 2 + 860.f, ResloutionY / 2 + 500.f));
 	wall->setScale(Vec2(720.f, 20.f));
 	AddObject(wall, GROUP_TYPE::FURNITURE);
 
 	wall = new CObstract;
 	wall->SetName(L"FURNITURE");
-	wall->setPos(Vec2(340.f, 500.f));
+	wall->setPos(Vec2(ResloutionX / 2 + 340.f, ResloutionY / 2 + 500.f));
 	wall->setScale(Vec2(100.f, 20.f));
 	AddObject(wall, GROUP_TYPE::FURNITURE);
 
 	wall = new CObstract;
 	wall->SetName(L"FURNITURE");
-	wall->setPos(Vec2(770.f, 915.f));
+	wall->setPos(Vec2(ResloutionX / 2 + 770.f, ResloutionY / 2 + 915.f));
 	wall->setScale(Vec2(320.f, 20.f));
+	AddObject(wall, GROUP_TYPE::FURNITURE);
+
+	wall = new CObstract;
+	wall->SetName(L"FURNITURE");
+	wall->setPos(Vec2(ResloutionX / 2 + 770.f, ResloutionY / 2 + 915.f));
+	wall->setScale(Vec2(100.f, 100.f));
 	AddObject(wall, GROUP_TYPE::FURNITURE);
 
 	CItem* Item = nullptr;
 	Item = new CItem;
 	Item->SetName(L"ITEM");
-	Item->setPos(Vec2(1000.f, 500.f));
+	Item->setPos(Vec2(ResloutionX / 2 + 1000.f, ResloutionY / 2 + 500.f));
 	Item->setScale(Vec2(25.f, 25.f));
 	AddObject(Item, GROUP_TYPE::ITEM);
 

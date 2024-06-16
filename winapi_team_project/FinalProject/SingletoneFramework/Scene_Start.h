@@ -5,6 +5,8 @@
 class Scene_Start :
     public CScene
 {
+private:
+
 public:
     Scene_Start();
     ~Scene_Start();

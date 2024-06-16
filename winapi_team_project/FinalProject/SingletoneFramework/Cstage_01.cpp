@@ -41,10 +41,10 @@ void Cstage_01::Render(HDC _dc)
 	Vec2 RenderPos = CCamera::Instance()->GetRenderPos(ptPos);
 
 	TransparentBlt(_dc
-		, RenderPos.x
-		, RenderPos.y
-		, width*3
-		, height*3
+		, RenderPos.x - width * 2
+		, RenderPos.y - height * 2
+		, width * 3
+		, height * 3
 		, tex->GetDC()
 		, 0, 0, width, height
 		, RGB(255, 0, 255));

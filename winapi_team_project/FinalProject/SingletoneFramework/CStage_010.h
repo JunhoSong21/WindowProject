@@ -1,24 +1,18 @@
-
 #pragma once
-
 #include "CObject.h"
 
 class CTexture;
 
-class CItem :
-	public CObject
-{
+class CStage_010 :
+	public CObject {
 private:
-	int Type;
 	CTexture* tex;
 
+	CLONE(CStage_010);
 public:
-	CItem();
-	~CItem();
+	CStage_010();
+	~CStage_010();
 
 	virtual void Update();
 	virtual void Render(HDC _dc);
-	void OnCollision(CCollider* _pOther);
-	CLONE(CItem);
-
 };

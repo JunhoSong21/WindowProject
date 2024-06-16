@@ -114,6 +114,12 @@
     <Filter Include="Engine\03. Manager\Finding">
       <UniqueIdentifier>{54fb3745-5296-4af5-9f40-1b2ce0a2cb58}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\05. Scene\Scene_Stage010">
+      <UniqueIdentifier>{10976706-b96c-4bcc-bc0c-b04b269d0a24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\CStage_010">
+      <UniqueIdentifier>{db1e88ec-c1a3-400a-9f65-1e652c2f4881}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -233,6 +239,12 @@
     <ClInclude Include="CFindingMgr.h">
       <Filter>Engine\03. Manager\Finding</Filter>
     </ClInclude>
+    <ClInclude Include="Scene_Stage010.h">
+      <Filter>Engine\05. Scene\Scene_Stage010</Filter>
+    </ClInclude>
+    <ClInclude Include="CStage_010.h">
+      <Filter>Engine\04. Object\CStage_010</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CCore.cpp">
@@ -333,6 +345,12 @@
     </ClCompile>
     <ClCompile Include="CFindingMgr.cpp">
       <Filter>Engine\03. Manager\Finding</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Stage010.cpp">
+      <Filter>Engine\05. Scene\Scene_Stage010</Filter>
+    </ClCompile>
+    <ClCompile Include="CStage_010.cpp">
+      <Filter>Engine\04. Object\CStage_010</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

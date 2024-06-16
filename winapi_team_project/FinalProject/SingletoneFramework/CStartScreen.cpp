@@ -14,7 +14,7 @@
 CStartScreen::CStartScreen()
 	: tex(nullptr)
 {
-		tex = CResMgr::Instance()->LoadTexture(L"MapTex", L"Texture\\StartScreen.bmp");
+	tex = CResMgr::Instance()->LoadTexture(L"MapTex", L"Texture\\StartScreen.bmp");
 }
 
 CStartScreen::~CStartScreen()

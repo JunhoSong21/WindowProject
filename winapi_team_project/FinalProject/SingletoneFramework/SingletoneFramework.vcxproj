@@ -110,7 +110,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>Create</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
@@ -126,7 +126,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>Create</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
@@ -151,6 +151,7 @@
     <ClInclude Include="CObstract.h" />
     <ClInclude Include="CScore.h" />
     <ClInclude Include="Cstage_01.h" />
+    <ClInclude Include="CStage_010.h" />
     <ClInclude Include="CStartScreen.h" />
     <ClInclude Include="CMissile.h" />
     <ClInclude Include="CMonster.h" />
@@ -171,6 +172,7 @@
     <ClInclude Include="Res.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Scene_Stage01.h" />
+    <ClInclude Include="Scene_Stage010.h" />
     <ClInclude Include="Scene_Start.h" />
     <ClInclude Include="SelectGDI.h" />
     <ClInclude Include="SingletoneFramework.h" />
@@ -192,6 +194,7 @@
     <ClCompile Include="CObstract.cpp" />
     <ClCompile Include="CScore.cpp" />
     <ClCompile Include="Cstage_01.cpp" />
+    <ClCompile Include="CStage_010.cpp" />
     <ClCompile Include="CStartScreen.cpp" />
     <ClCompile Include="CMissile.cpp" />
     <ClCompile Include="CMonster.cpp" />
@@ -208,6 +211,7 @@
     <ClCompile Include="func.cpp" />
     <ClCompile Include="Res.cpp" />
     <ClCompile Include="Scene_Stage01.cpp" />
+    <ClCompile Include="Scene_Stage010.cpp" />
     <ClCompile Include="Scene_Start.cpp" />
     <ClCompile Include="SelectGDI.cpp" />
     <ClCompile Include="SingletoneFramework.cpp" />

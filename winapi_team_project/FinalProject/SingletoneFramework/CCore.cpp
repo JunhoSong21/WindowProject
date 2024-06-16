@@ -60,13 +60,12 @@ int CCore::Init(HWND _hWnd, POINT _ptResolution) {
 	CSceneMgr::Instance()->Init();
 	CSoundMgr::Instance()->Init();
 
-	CResMgr::Instance()->LoadSound(L"BGM", L"Sound//MainBGM.wav");
+	CResMgr::Instance()->LoadSound(L"BGM", L"Sound\\Stage_01.wav");
 	CSound* NewSound = CResMgr::Instance()->FindSound(L"BGM");
 
 	NewSound->PlayToBGM(true);
 	NewSound->SetPosition(0.f);
 	NewSound->SetVolume(20.f);
-	// NewSound->PlayToBGM(true);
 
 	return S_OK;
 }
