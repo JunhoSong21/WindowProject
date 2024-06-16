@@ -108,6 +108,12 @@
     <Filter Include="Engine\04. Object\Cstage_01">
       <UniqueIdentifier>{77ee3079-68e0-4371-9e9a-619626ef3631}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\07. Component\CFinding">
+      <UniqueIdentifier>{4e830baf-dd8c-4506-9eb4-c5cf1c9a1925}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Manager\Finding">
+      <UniqueIdentifier>{54fb3745-5296-4af5-9f40-1b2ce0a2cb58}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -221,6 +227,12 @@
     <ClInclude Include="Cstage_01.h">
       <Filter>Engine\04. Object\Cstage_01</Filter>
     </ClInclude>
+    <ClInclude Include="CFinding.h">
+      <Filter>Engine\07. Component\CFinding</Filter>
+    </ClInclude>
+    <ClInclude Include="CFindingMgr.h">
+      <Filter>Engine\03. Manager\Finding</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CCore.cpp">
@@ -315,6 +327,12 @@
     </ClCompile>
     <ClCompile Include="Cstage_01.cpp">
       <Filter>Engine\04. Object\Cstage_01</Filter>
+    </ClCompile>
+    <ClCompile Include="CFinding.cpp">
+      <Filter>Engine\07. Component\CFinding</Filter>
+    </ClCompile>
+    <ClCompile Include="CFindingMgr.cpp">
+      <Filter>Engine\03. Manager\Finding</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

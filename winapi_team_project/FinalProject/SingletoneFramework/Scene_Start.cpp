@@ -8,6 +8,7 @@
 #include "CMonster.h"
 
 #include "CColliderMgr.h"
+#include "CFindingMgr.h"
 #include "CKeyMgr.h"
 #include "CPathMgr.h"
 #include "CTexture.h"

@@ -3,6 +3,7 @@
 #include "CCamera.h"
 
 class CCollider;
+class CFinding;
 class CAnimator;
 
 class CObject {
@@ -14,6 +15,7 @@ private:
 
 	// 기능이 있을수도 있고 없을수도 있으므로 Component로 제작
 	CCollider*	collider;
+	CFinding*	finding;
 	CAnimator*	animator;
 
 	bool		alive;
@@ -34,6 +36,7 @@ public:
 	const wstring& GetName() { return strName; }
 
 	CCollider* GetCollider() { return collider; }
+	CFinding* GetFinding() { return finding; }
 	CAnimator* GetAnimator() { return animator; }
 
 	bool IsDead() { return !alive; }
@@ -41,11 +44,16 @@ public:
 	int GetSel() { return Selection; }
 
 	void CreateCollider();
+	void CreateFinding();
 	void CreateAnimator();
 
 	virtual void OnCollision(CCollider* _pOther) {}
 	virtual void OnCollisionEnter(CCollider* _pOther) {}
 	virtual void OnCollisionExit(CCollider* _pOther) {}
+
+	virtual void OnFinding(CFinding* _pOther) {}
+	virtual void OnFindingEnter(CFinding* _pOther) {}
+	virtual void OnFindingExit(CFinding* _pOther) {}
 
 private:
 	void SetDead() { alive = false; }

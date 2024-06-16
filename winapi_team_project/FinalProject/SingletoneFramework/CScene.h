@@ -6,6 +6,8 @@ class CScene {
 private:
 	vector<CObject*> arrObj[(UINT)GROUP_TYPE::END];
 	wstring		strName;
+	Vec2 ptPos;
+	int Point;
 
 public:
 	CScene();
@@ -20,6 +22,12 @@ public:
 
 	virtual void Enter() = 0;
 	virtual void Exit() = 0;
+
+	void setPos(Vec2 _ptPos) { ptPos = _ptPos; }
+	Vec2 getPos() { return ptPos; }
+
+	void setPoint(int _po) { Point = _po; }
+	int getPoint() { return Point; }
 
 public:
 	void AddObject(CObject* obj, GROUP_TYPE type) {

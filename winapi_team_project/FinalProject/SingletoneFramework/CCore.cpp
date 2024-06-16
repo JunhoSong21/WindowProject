@@ -2,6 +2,7 @@
 #include "CCore.h"
 
 #include "CColliderMgr.h"
+#include "CFindingMgr.h"
 #include "CEventMgr.h"
 #include "CKeyMgr.h"
 #include "CPathMgr.h"
@@ -80,6 +81,7 @@ void CCore::Progress() {
 
 	// 충돌체크
 	CColliderMgr::Instance()->Update();
+	CFindingMgr::Instance()->Update();
 
 	Rectangle(mDC, -1, -1, ptResolution.x + 1, ptResolution.y + 1);
 

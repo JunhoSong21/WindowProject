@@ -54,9 +54,14 @@ void CMissile::Render(HDC _hDC) {
 
 void CMissile::OnCollisionEnter(CCollider* _pOther) {
 	CObject* OtherObj = _pOther->GetObj();
-
+	if (OtherObj->GetName() == L"Monster") {
+		int NowPoint = CScore::Instance()->getPoint();
+		NowPoint += 1000;
+		CScore::Instance()->setPoint(NowPoint);
+	}
 	if (OtherObj->GetName() == L"Monster"|| OtherObj->GetName() == L"FURNITURE") {
 		DeleteObject(this);
+		
 		if (isItem) {
 			CreateItem();
 		}
