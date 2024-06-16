@@ -37,12 +37,12 @@ void Cstage_01::Render(HDC _dc)
 	int ResloutionX = GetSystemMetrics(SM_CXSCREEN);
 	int ResloutionY = GetSystemMetrics(SM_CYSCREEN);
 
-	Vec2 ptPos = Vec2(ResloutionX, ResloutionY);
+	Vec2 ptPos = getPos();
 	Vec2 RenderPos = CCamera::Instance()->GetRenderPos(ptPos);
 
 	TransparentBlt(_dc
-		, (int)(RenderPos.x - (width * 2))
-		, (int)(RenderPos.y - (height * 2))
+		, RenderPos.x
+		, RenderPos.y
 		, width*3
 		, height*3
 		, tex->GetDC()
