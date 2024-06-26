@@ -6,11 +6,11 @@ class CScene {
 private:
 	vector<CObject*> arrObj[(UINT)GROUP_TYPE::END];
 	wstring		strName;
-	Vec2 ptPos;
-	int Point;
-	bool InvPoint;
-	int RR, GG, BB;
-	float colortime;
+	Vec2		ptPos;
+	int			Point;
+	bool		InvPoint;
+	int			RR, GG, BB;
+	float		colortime;
 
 public:
 	CScene();

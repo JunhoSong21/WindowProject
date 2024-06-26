@@ -46,7 +46,7 @@ void CStartScreen::Render(HDC _dc)
 	// 비슷한 폰트 목록
 	// coure, serife, smalle, h8514sys, h8514oem
 
-	RECT rt = { 0,0,ResloutionX,1200 };
+	RECT rt = { 0,0,ResloutionX, 1500 };
 	SetBkMode(_dc, TRANSPARENT);
 	SetTextColor(_dc, RGB(255, 255, 255));
 	DrawText(_dc, L"PRESS ENTER", lstrlen(L"PRESS ENTER"), &rt, DT_VCENTER | DT_CENTER | DT_SINGLELINE);

@@ -19,6 +19,7 @@
 #include "CCamera.h"
 #include "CResMgr.h"
 #include "CSound.h"
+#include "CCollider.h"
 
 Scene_Stage010::Scene_Stage010()
 {
@@ -35,6 +36,8 @@ void Scene_Stage010::Update() {
 		// 0.5초 반 검은색 화면 0.5초 완전 검은색 화면
 		ChangeScene(SCENE_TYPE::STAGE_01);
 	}
+
+	Vec2 ptPos = getPos();
 }
 
 void Scene_Stage010::Enter() {
@@ -68,8 +71,17 @@ void Scene_Stage010::Enter() {
 	wall->SetName(L"FURNITURE");
 	wall->setPos(Vec2(ResloutionX / 2 + -30.f, ResloutionY / 2 + 500.f));
 	wall->setScale(Vec2(16.f, 1900.f));
-	AddObject(wall, GROUP_TYPE::FURNITURE);
+	AddObject(wall, GROUP_TYPE::FURNITURE); // 제일 왼쪽 긴 벽
 
+	CMonster* MonsterObj = nullptr;
+	MonsterObj = new CMonster;
+	MonsterObj->SetName(L"Monster");
+	MonsterObj->SetCenterPos(Vec2(2180.f, 1300.f));
+	MonsterObj->setPos(Vec2(MonsterObj->GetCenterPos()));
+	MonsterObj->SetMoveDist(0);
+	MonsterObj->setScale(Vec2(100.f, 250.f));
+	MonsterObj->SetHP(0);
+	AddObject(MonsterObj, GROUP_TYPE::MONSTER);
 
 	CColliderMgr::Instance()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::MONSTER);
 	CColliderMgr::Instance()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::FURNITURE);

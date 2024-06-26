@@ -23,9 +23,9 @@ CStage_010::~CStage_010()
 
 void CStage_010::Update()
 {
-	Vec2 ptPos = getPos();
+	/*Vec2 ptPos = getPos();
 
-	setPos(ptPos);
+	setPos(ptPos);*/
 }
 
 void CStage_010::Render(HDC _dc)
@@ -33,16 +33,15 @@ void CStage_010::Render(HDC _dc)
 	int width = (int)tex->Width();
 	int height = (int)tex->Height();
 
-
-	int ResloutionX = GetSystemMetrics(SM_CXSCREEN);
-	int ResloutionY = GetSystemMetrics(SM_CYSCREEN);
+	int ResolutionX = GetSystemMetrics(SM_CXSCREEN);
+	int ResolutionY = GetSystemMetrics(SM_CYSCREEN);
 
 	Vec2 ptPos = getPos();
 	Vec2 RenderPos = CCamera::Instance()->GetRenderPos(ptPos);
 
 	TransparentBlt(_dc
-		, RenderPos.x - width * 2
-		, RenderPos.y - height * 2
+		, RenderPos.x - width * 2 - ResolutionX * 0.2
+		, RenderPos.y - height * 2 - ResolutionY * 0.2
 		, width * 3
 		, height * 3
 		, tex->GetDC()

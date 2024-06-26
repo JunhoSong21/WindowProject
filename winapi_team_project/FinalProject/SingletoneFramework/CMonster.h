@@ -12,7 +12,7 @@ private:
 	int		Dir; // 방향(1, -1)
 	int		selection; //무기
 	int		iHP;
-	float Attack;
+	float	Attack;
 	Vec2	DirVec;		//바라보는 방향
 
 public:
